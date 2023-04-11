@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.2](https://github.com/fedeloterstein/hostmate/compare/v0.1.1...v0.1.2) (2023-04-11)
+
+
+### ✨ Features
+
+* create basic project ([b0701a5](https://github.com/fedeloterstein/hostmate/commit/b0701a50a4ae2f68f7359270b47b5fe9045abda4))
+
 ### 0.1.1 (2023-04-11)
 
 
