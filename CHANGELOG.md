@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.3](https://github.com/fedeloterstein/hostmate/compare/v0.1.2...v0.1.3) (2023-04-11)
+
+
+### ✨ Features
+
+* add next-auth ([693e210](https://github.com/fedeloterstein/hostmate/commit/693e2104a8db9aaccec321d6b80eaa3927dc9947))
+
 ### [0.1.2](https://github.com/fedeloterstein/hostmate/compare/v0.1.1...v0.1.2) (2023-04-11)
 
 
