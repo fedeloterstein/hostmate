@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.5](https://github.com/fedeloterstein/hostmate/compare/v0.1.4...v0.1.5) (2023-04-12)
+
+
+### 👨‍💻 Chores
+
+* refactor home ([626abcc](https://github.com/fedeloterstein/hostmate/commit/626abcc73428cd0a9dbcffec3d1daddf502ecb9f))
+
 ### [0.1.4](https://github.com/fedeloterstein/hostmate/compare/v0.1.3...v0.1.4) (2023-04-12)
 
 
