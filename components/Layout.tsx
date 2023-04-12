@@ -13,7 +13,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <Container  maxW='container.xl'>{children}</Container>
+      <Container maxW='container.xl'>{children}</Container>
     </>
   );
 };
