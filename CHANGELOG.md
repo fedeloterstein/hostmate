@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.6](https://github.com/fedeloterstein/hostmate/compare/v0.1.5...v0.1.6) (2023-04-12)
+
+
+### 👨‍💻 Chores
+
+* refactor register ([e817ce5](https://github.com/fedeloterstein/hostmate/commit/e817ce5c55b342604e32b066be9488421a407bf2))
+
 ### [0.1.5](https://github.com/fedeloterstein/hostmate/compare/v0.1.4...v0.1.5) (2023-04-12)
 
 
