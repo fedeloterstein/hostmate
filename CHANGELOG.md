@@ -2,6 +2,20 @@
 
 ---
 
+### [0.1.4](https://github.com/fedeloterstein/hostmate/compare/v0.1.3...v0.1.4) (2023-04-12)
+
+
+### ✨ Features
+
+* create login form ([ef23947](https://github.com/fedeloterstein/hostmate/commit/ef23947d733caf0eccfd0fc45c1b1911e39b54f2))
+
+
+### 👨‍💻 Chores
+
+* edit color mode ([249aab7](https://github.com/fedeloterstein/hostmate/commit/249aab7a0440b1ab3242aef25b4db479aabc4b9a))
+* fix erros pipeline ([555ddbf](https://github.com/fedeloterstein/hostmate/commit/555ddbf495cea0c3436291abe87e9abe2e7cac32))
+* fix erros pipeline ([0ebe9c2](https://github.com/fedeloterstein/hostmate/commit/0ebe9c2f411c9d5afb3f9e737048e3f5e098e3ed))
+
 ### [0.1.3](https://github.com/fedeloterstein/hostmate/compare/v0.1.2...v0.1.3) (2023-04-11)
 
 
