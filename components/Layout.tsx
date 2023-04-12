@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
-import Navbar from './Navbar';
 import Head from 'next/head';
+import { Navbar } from './Navbar';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
