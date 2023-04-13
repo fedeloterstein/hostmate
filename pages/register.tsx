@@ -42,6 +42,9 @@ export default function Register() {
     }
   }, [session]);
 
+  let porc = Object.keys(data).length / 10 * 100;
+
+  
  
 
   const saveData = async () => {
@@ -71,8 +74,8 @@ export default function Register() {
       {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
 
       <HStack justify={'space-between'} w={'100%'} p={'42px'} position={'absolute'} bottom={0}>
-        <CircularProgress value={40} color="#3378FF">
-          <CircularProgressLabel>40%</CircularProgressLabel>
+        <CircularProgress value={porc} color="#3378FF">
+          <CircularProgressLabel>{porc}%</CircularProgressLabel>
         </CircularProgress>
         <HStack>
           <Button
