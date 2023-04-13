@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.8](https://github.com/fedeloterstein/hostmate/compare/v0.1.7...v0.1.8) (2023-04-13)
+
+
+### 🐛 Bug Fixes
+
+* fix error chakra ([bcb6832](https://github.com/fedeloterstein/hostmate/commit/bcb6832f17bfc88ba47ac6b99407f3c6c28a758e))
+
 ### [0.1.7](https://github.com/fedeloterstein/hostmate/compare/v0.1.6...v0.1.7) (2023-04-13)
 
 
