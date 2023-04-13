@@ -66,7 +66,7 @@ export default function Register() {
             variant={'solid'}
             colorScheme="blue"
             bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={() => setstep('two')}
+            onClick={step === "one" ? () => setstep('two') : () => router.push('/explore')}
           >
             Next reviews
           </Button>
