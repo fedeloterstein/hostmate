@@ -112,6 +112,7 @@ export default function Home() {
               variant={'solid'}
               colorScheme="blue"
               bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+              onClick={() => router.push('/explore')}
             >
               See Host
             </Button>

@@ -196,7 +196,7 @@ const StepOne = ({ setdata, data }: any) => {
 };
 
 const StepTwo = () => {
-  return <p>proximamente</p>;
+  return    <Heading>En contruccion 🚧🚀...</Heading>
 };
 /**
    <Layout>

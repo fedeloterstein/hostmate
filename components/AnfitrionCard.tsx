@@ -1,111 +1,45 @@
-import {
-  Heading,
-  Avatar,
-  Box,
-  Center,
-  Text,
-  Stack,
-  Button,
-  Link,
-  Badge,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { MdStartOutlineIcon } from '@/assets/icons/MdStartOutlineIcon';
+import { Avatar, Button, HStack, Heading, Stack, Tag, Text } from '@chakra-ui/react';
+import React from 'react';
 
-export default function AnfitrionCard({ item }: any) {
-
+export const AnfitrionCard = ({ item }: any) => {
   const {
     availability,
     email,
     image,
     languages,
     location,
+    propertiesType,
     name,
     phone,
     rentalTerms,
     yearsExperience,
-    description
+    description,
   } = item;
   return (
-    <Center py={6}>
-      <Box
-        maxW={'320px'}
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'2xl'}
-        rounded={'lg'}
-        p={6}
-        textAlign={'center'}
+    <Stack border={'1px'} borderColor={'#3378FF'} borderRadius={'8px'} p={'27px'} align={'center'} justify={'center'}>
+      <Avatar size={'xl'} src={image} mb={'33px'}/>
+      <Text fontWeight={700} fontSize={'14px'} color={'#4A4A4A'}>{name}</Text>
+      <Text>{location}</Text>
+      <Text>{description}</Text>
+      <Tag>{propertiesType}</Tag>
+      <Text>150 reviews</Text>
+      <HStack>
+        <MdStartOutlineIcon />
+        <MdStartOutlineIcon />
+        <MdStartOutlineIcon />
+        <MdStartOutlineIcon />
+        <MdStartOutlineIcon />
+      </HStack>
+      <Button
+        color={'white'}
+        size={'lg'}
+        variant={'solid'}
+        colorScheme="blue"
+        bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
       >
-        <Avatar
-          size={'xl'}
-          src={image}
-          mb={4}
-          pos={'relative'}
-          _after={{
-            content: '""',
-            w: 4,
-            h: 4,
-            bg: 'green.300',
-            border: '2px solid white',
-            rounded: 'full',
-            pos: 'absolute',
-            bottom: 0,
-            right: 3,
-          }}
-        />
-        <Heading fontSize={'2xl'} fontFamily={'body'}>
-          {name}
-        </Heading>
-        <Text fontWeight={600} color={'gray.500'} mb={4}>
-          {location}
-        </Text>
-        <Text textAlign={'center'} color={useColorModeValue('gray.700', 'gray.400')} px={3}>
-          {description}
-        </Text>
-
-        <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-          <Badge px={2} py={1} bg={useColorModeValue('gray.50', 'gray.800')} fontWeight={'400'}>
-            #art
-          </Badge>
-          <Badge px={2} py={1} bg={useColorModeValue('gray.50', 'gray.800')} fontWeight={'400'}>
-            #photography
-          </Badge>
-          <Badge px={2} py={1} bg={useColorModeValue('gray.50', 'gray.800')} fontWeight={'400'}>
-            #music
-          </Badge>
-        </Stack>
-
-        <Stack mt={8} direction={'row'} spacing={4}>
-          <Button
-            flex={1}
-            fontSize={'sm'}
-            rounded={'full'}
-            _focus={{
-              bg: 'gray.200',
-            }}
-          >
-            Message
-          </Button>
-          <Button
-            flex={1}
-            fontSize={'sm'}
-            rounded={'full'}
-            bg={'blue.400'}
-            color={'white'}
-            boxShadow={
-              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-            }
-            _hover={{
-              bg: 'blue.500',
-            }}
-            _focus={{
-              bg: 'blue.500',
-            }}
-          >
-            Follow
-          </Button>
-        </Stack>
-      </Box>
-    </Center>
+        Ask for interview
+      </Button>
+    </Stack>
   );
-}
+};

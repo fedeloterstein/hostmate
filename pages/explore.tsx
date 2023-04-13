@@ -2,18 +2,19 @@ import { Layout } from '@/components/Layout';
 import { useEffect, useState } from 'react';
 import { database } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import AnfitrionCard from '@/components/AnfitrionCard';
-import { SimpleGrid } from '@chakra-ui/react';
-
+import { Heading, SimpleGrid } from '@chakra-ui/react';
+import { AnfitrionCard } from '@/components/AnfitrionCard';
 
 export default function Explore() {
   const dbInstance = collection(database, 'users');
   const [dataAnfitriones, setdataAnfitriones] = useState<any>();
   const getProfiles = () => {
     getDocs(dbInstance).then((data) => {
-      setdataAnfitriones(data.docs.map((item) => {
-        return { ...item.data(), id: item.id }
-    }));
+      setdataAnfitriones(
+        data.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        }),
+      );
     });
   };
   useEffect(() => {
@@ -22,10 +23,11 @@ export default function Explore() {
 
   return (
     <Layout>
+      <Heading>En contruccion 🚧🚀...</Heading>
       <SimpleGrid columns={[1, 2, 3]} spacing={5} alignSelf={'center'}>
-      {dataAnfitriones &&
+        {dataAnfitriones &&
           dataAnfitriones.map((item: any, i: any) => {
-            return <AnfitrionCard item={item} key={i}/>;
+            return <AnfitrionCard item={item} key={i} />;
           })}
       </SimpleGrid>
     </Layout>
