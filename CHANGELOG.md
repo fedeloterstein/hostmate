@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.7](https://github.com/fedeloterstein/hostmate/compare/v0.1.6...v0.1.7) (2023-04-13)
+
+
+### 👨‍💻 Chores
+
+* fix errors navigation ([e9f2d6b](https://github.com/fedeloterstein/hostmate/commit/e9f2d6b91a0a9bb64742902284cef9d9534e8b71))
+
 ### [0.1.6](https://github.com/fedeloterstein/hostmate/compare/v0.1.5...v0.1.6) (2023-04-12)
 
 
