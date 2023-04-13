@@ -74,7 +74,7 @@ export default function Home() {
           don’t have time to manage their rent spaces, to taking care of their accommodation and
           guests and boosting his rental spaces for a fee.”
         </Text>
-        <HStack pt={'77px'} pb={'59px'} gap={'140px'} w={'100%'} h={'100%'} justify={'center'}>
+        <Stack pt={'77px'} pb={'59px'}  w={'100%'} h={'100%'} justify={'center'} align={'center'} direction={['column', 'column', 'row']} gap={10}>
           <Stack
             backgroundImage={img1}
             bgRepeat="no-repeat"
@@ -142,7 +142,7 @@ export default function Home() {
               Become a Host
             </Button>
           </Stack>
-        </HStack>
+        </Stack>
       </Stack>
     </Layout>
   );
