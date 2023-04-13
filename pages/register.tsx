@@ -24,14 +24,17 @@ import { log } from 'console';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { app, database } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
 
 export default function Register() {
   const { data: session } = useSession();
-  const router = useRouter();
+
   const [step, setstep] = useState('one');
+  const [data, setdata] = useState({});
+  const router = useRouter();
+  const dbInstance = collection(database, 'users');
 
   useEffect(() => {
     if (!session) {
@@ -39,11 +42,33 @@ export default function Register() {
     }
   }, [session]);
 
+ 
+
+  const saveData = async () => {
+    const { name, email, image }: any = session?.user;
+    let user: any = data;
+    user.image = image;
+    user.email = email;
+    user.name = name;
+    setdata(user);
+
+    addDoc(dbInstance, user)
+      .then(() => console.log('listo'))
+      .then(() => router.push('/explore'));
+  };
+
+  const nextStep = async () => {
+    if (step === 'one') {
+      setstep('two');
+    } else {
+      await saveData();
+    }
+  };
   return (
     <Stack w={'100%'} h={'100vh'} align={'center'}>
       <Navbar />
-    
-      {step === 'one' ? <StepOne /> : <StepTwo />}
+
+      {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
 
       <HStack justify={'space-between'} w={'100%'} p={'42px'} position={'absolute'} bottom={0}>
         <CircularProgress value={40} color="#3378FF">
@@ -66,7 +91,7 @@ export default function Register() {
             variant={'solid'}
             colorScheme="blue"
             bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={step === "one" ? () => setstep('two') : () => router.push('/explore')}
+            onClick={nextStep}
           >
             Next reviews
           </Button>
@@ -76,25 +101,8 @@ export default function Register() {
   );
 }
 
-const StepOne = () => {
+const StepOne = ({ setdata, data }: any) => {
   const { data: session } = useSession();
-  const [data, setdata] = useState({});
-  const router = useRouter();
-  const dbInstance = collection(database, 'users');
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const { name, email, image }: any = session?.user;
-    let user: any = data;
-    user.image = image;
-    user.email = email;
-    user.name = name;
-    setdata(user);
-
-    addDoc(dbInstance, user)
-      .then(() => console.log('listo'))
-      .then(() => router.push('/'));
-  };
 
   return (
     <>
