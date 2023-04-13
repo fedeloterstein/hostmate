@@ -10,7 +10,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
         theme={extendTheme({
           config: {
             initialColorMode: 'light',
-            useSystemColorMode: true,
+            useSystemColorMode: false,
           },
         })}
       >
