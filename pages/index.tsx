@@ -40,9 +40,17 @@ export default function Home() {
   const getByEmail = async () => {
     const q = query(dbInstance, where('email', '==', session?.user?.email));
     const querySnapshot = await getDocs(q);
+    if (querySnapshot.docs.length === 0) {
+      router.push('/register');
+    }
     querySnapshot.forEach((doc) => {
-      if (doc.data() !== undefined) {
-        router.push('/register');
+      if (Object.keys(doc.data()).length < 5) {
+        //router.push('/edit-register');
+        router.push('/explore');
+      }
+
+      if (Object.keys(doc.data()).length > 4) {
+        router.push('/explore');
       }
       setdata(doc.data());
     });
@@ -104,6 +112,7 @@ export default function Home() {
               variant={'solid'}
               colorScheme="blue"
               bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+              onClick={() => router.push('/explore')}
             >
               See Host
             </Button>

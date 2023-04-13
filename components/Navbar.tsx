@@ -1,6 +1,7 @@
 import { Logo } from '@/assets/icons/Logo';
 import { Avatar, Button, HStack } from '@chakra-ui/react';
 import { useSession, signOut } from 'next-auth/react';
+import Link from 'next/link';
 import React from 'react';
 
 export const Navbar = () => {
@@ -8,7 +9,9 @@ export const Navbar = () => {
 
   return (
     <HStack w={'100%'} justify={'space-between'} p={'37px'}>
+      <Link href={'/'}>  
       <Logo />
+      </Link>
       {session && <Avatar size={'sm'} src={session.user?.image as string} onClick={() => signOut()}/>}
     </HStack>
   );
