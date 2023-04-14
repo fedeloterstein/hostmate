@@ -2,6 +2,20 @@
 
 ---
 
+### [0.1.10](https://github.com/fedeloterstein/hostmate/compare/v0.1.9...v0.1.10) (2023-04-14)
+
+
+### ✨ Features
+
+* add new login method ([1927905](https://github.com/fedeloterstein/hostmate/commit/19279054d7b1f9a34ce0d63cfbbfd354a399e345))
+
+
+### 👨‍💻 Chores
+
+* fix errors ([4c16ac8](https://github.com/fedeloterstein/hostmate/commit/4c16ac820dc17d61db71dae613b5c975930d5168))
+* update config ([afa6d4e](https://github.com/fedeloterstein/hostmate/commit/afa6d4ec1a05b6a04cfffb5ce3a29f4c20001bd7))
+* update post user ([0ebc0e0](https://github.com/fedeloterstein/hostmate/commit/0ebc0e056617f4bbbbb4091dbf5a85d76fe46743))
+
 ### [0.1.9](https://github.com/fedeloterstein/hostmate/compare/v0.1.8...v0.1.9) (2023-04-13)
 
 
