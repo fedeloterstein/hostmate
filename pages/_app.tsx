@@ -1,9 +1,10 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { SessionProvider } from 'next-auth/react';
-import theme from '@/theme';
+import { app } from '../firebase.config';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+
   return (
     <SessionProvider session={session}>
       <ChakraProvider

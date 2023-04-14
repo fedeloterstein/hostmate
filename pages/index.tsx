@@ -1,31 +1,8 @@
-import { Navbar } from '@/components/Navbar';
-import {
-  Button,
-  HStack,
-  Heading,
-  Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { Layout } from '@/components/Layout';
-import ProfileSelector from '@/components/ProfileSelector';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { app, database } from '../firebase';
-import { log } from 'console';
-import { useRouter } from 'next/router';
-import { Spinner } from '@chakra-ui/react';
+import { Button, Heading, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
-const dbInstance = collection(database, 'users');
+import { Layout } from '@/components/Layout';
+import { useRouter } from 'next/router';
+import { ModaLogin } from '@/components/ModaLogin';
 
 const origin = typeof window === 'undefined' ? '' : window.location.origin;
 const img1 = `${origin}/images/home1.png`;
@@ -33,38 +10,14 @@ const img2 = `${origin}/images/home2.png`;
 const img3 = `${origin}/images/home3.png`;
 
 export default function Home() {
-  const { data: session } = useSession();
-  const [data, setdata] = useState<any>();
-
   const router = useRouter();
-  const getByEmail = async () => {
-    const q = query(dbInstance, where('email', '==', session?.user?.email));
-    const querySnapshot = await getDocs(q);
-    if (querySnapshot.docs.length === 0) {
-      router.push('/register');
-    }
-    querySnapshot.forEach((doc) => {
-      if (Object.keys(doc.data()).length < 5) {
-        //router.push('/edit-register');
-        router.push('/explore');
-      }
 
-      if (Object.keys(doc.data()).length > 4) {
-        router.push('/explore');
-      }
-      setdata(doc.data());
-    });
-  };
-  useEffect(() => {
-    if (session) {
-      getByEmail();
-    }
-  }, [session]);
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Layout>
       <Stack w={'100%'} justify={'flex-start'} align={'center'} bg={'white'}>
         <Image src={img3} />
+        <ModaLogin isOpen={isOpen} onClose={onClose} />
         <Heading
           fontWeight={600}
           fontSize={'40px'}
@@ -82,7 +35,16 @@ export default function Home() {
           don’t have time to manage their rent spaces, to taking care of their accommodation and
           guests and boosting his rental spaces for a fee.”
         </Text>
-        <Stack pt={'77px'} pb={'59px'}  w={'100%'} h={'100%'} justify={'center'} align={'center'} direction={['column', 'column', 'row']} gap={10}>
+        <Stack
+          pt={'77px'}
+          pb={'59px'}
+          w={'100%'}
+          h={'100%'}
+          justify={'center'}
+          align={'center'}
+          direction={['column', 'column', 'row']}
+          gap={10}
+        >
           <Stack
             backgroundImage={img1}
             bgRepeat="no-repeat"
@@ -146,7 +108,7 @@ export default function Home() {
               variant={'solid'}
               colorScheme="blue"
               bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-              onClick={() => signIn()}
+              onClick={onOpen}
             >
               Become a Host
             </Button>

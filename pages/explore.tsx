@@ -1,9 +1,9 @@
 import { Layout } from '@/components/Layout';
 import { useEffect, useState } from 'react';
-import { database } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { Heading, SimpleGrid } from '@chakra-ui/react';
 import { AnfitrionCard } from '@/components/AnfitrionCard';
+import { database } from '@/firebase.config';
 
 export default function Explore() {
   const dbInstance = collection(database, 'users');
@@ -24,7 +24,7 @@ export default function Explore() {
   return (
     <Layout>
       <Heading>En contruccion 🚧🚀...</Heading>
-      <SimpleGrid columns={[1, 2, 3]} spacing={5} alignSelf={'center'}>
+      <SimpleGrid p={5} columns={[1, 2, 3]} spacing={5} alignSelf={'center'}>
         {dataAnfitriones &&
           dataAnfitriones.map((item: any, i: any) => {
             return <AnfitrionCard item={item} key={i} />;
