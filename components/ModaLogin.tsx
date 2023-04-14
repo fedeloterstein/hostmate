@@ -43,7 +43,7 @@ export const ModaLogin = ({isOpen, onClose}: any) => {
         duration: 9000,
         isClosable: true,
       })
-      router.push('/exito')
+      router.push('/register')
     } catch (error: any) {
       console.log(error);
       toast({

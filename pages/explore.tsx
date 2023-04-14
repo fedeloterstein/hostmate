@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { Heading, SimpleGrid } from '@chakra-ui/react';
 import { AnfitrionCard } from '@/components/AnfitrionCard';
-import { database } from '@/firebaseConfig';
+import { database } from '@/firebase.config';
 
 export default function Explore() {
   const dbInstance = collection(database, 'users');

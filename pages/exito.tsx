@@ -1,5 +1,5 @@
 import { onLogout } from '@/api/AuthAPI';
-import { auth } from '@/firebaseConfig';
+import { auth } from '@/firebase.config';
 import { Button, Spinner, Stack } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';

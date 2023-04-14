@@ -1,4 +1,5 @@
-import { auth } from '@/firebaseConfig';
+
+import { auth } from '@/firebase.config';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 
 export const LoginAPI = (email: string, password: string) => {

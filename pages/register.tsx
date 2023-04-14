@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { auth, database } from '@/firebaseConfig';
+import { auth, database } from '@/firebase.config';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
@@ -48,7 +48,7 @@ export default function Register() {
   }, []);
 
 
-  let porc = 10;
+  let porc = Object.keys(data).length / 10 * 100;
 
   const saveData = async () => {
     console.log('entre');
@@ -72,39 +72,42 @@ export default function Register() {
     }
   };
   return (
+    <>
     <Stack w={'100%'} h={'100vh'} align={'center'}>
       <Navbar />
 
       {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
 
-      <HStack justify={'space-between'} w={'100%'} p={'42px'} position={'absolute'} bottom={0}>
-        <CircularProgress value={porc} color="#3378FF">
-          <CircularProgressLabel>{porc}%</CircularProgressLabel>
-        </CircularProgress>
-        <HStack>
-          <Button
-            color={'white'}
-            size={'lg'}
-            variant="ghost"
-            bgClip="text"
-            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={() => router.push('/explore')}
-          >
-            Skip for now
-          </Button>
-          <Button
-            color={'white'}
-            size={'lg'}
-            variant={'solid'}
-            colorScheme="blue"
-            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={nextStep}
-          >
-            Next reviews
-          </Button>
-        </HStack>
-      </HStack>
+     
     </Stack>
+     <HStack justify={'space-between'} w={'100%'} p={'42px'} >
+     <CircularProgress value={porc} color="#3378FF">
+       <CircularProgressLabel>{porc}%</CircularProgressLabel>
+     </CircularProgress>
+     <HStack>
+       <Button
+         color={'white'}
+         size={'lg'}
+         variant="ghost"
+         bgClip="text"
+         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+         onClick={() => router.push('/explore')}
+       >
+         Skip for now
+       </Button>
+       <Button
+         color={'white'}
+         size={'lg'}
+         variant={'solid'}
+         colorScheme="blue"
+         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+         onClick={nextStep}
+       >
+         Next reviews
+       </Button>
+     </HStack>
+   </HStack>
+   </>
   );
 }
 

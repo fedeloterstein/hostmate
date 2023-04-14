@@ -1,6 +1,6 @@
 import { onLogout } from '@/api/AuthAPI';
 import { Logo } from '@/assets/icons/Logo';
-import { auth } from '@/firebaseConfig';
+import { auth } from '@/firebase.config';
 import { Avatar, Button, HStack } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSession, signOut } from 'next-auth/react';
