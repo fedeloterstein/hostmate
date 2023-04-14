@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.11](https://github.com/fedeloterstein/hostmate/compare/v0.1.10...v0.1.11) (2023-04-14)
+
+
+### 👨‍💻 Chores
+
+* add fix ([db922c7](https://github.com/fedeloterstein/hostmate/commit/db922c723be50f116b9a9f76c916a4cfb2dfbedf))
+
 ### [0.1.10](https://github.com/fedeloterstein/hostmate/compare/v0.1.9...v0.1.10) (2023-04-14)
 
 
