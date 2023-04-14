@@ -9,12 +9,12 @@ import { getFirestore } from 'firebase/firestore';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.NEXT_FIREBASE_API_KEY,
-  authDomain: 'hostmate-mvp.firebaseapp.com',
-  projectId: 'hostmate-mvp',
-  storageBucket: 'hostmate-mvp.appspot.com',
-  messagingSenderId: '783313026230',
-  appId: '1:783313026230:web:86da5c039c5c81a9347a17',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_PROJECT_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 // Initialize Firebase

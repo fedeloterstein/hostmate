@@ -1,7 +1,7 @@
 import { onLogout } from '@/api/AuthAPI';
 import { Logo } from '@/assets/icons/Logo';
 import { auth } from '@/firebase.config';
-import { Avatar, Button, HStack } from '@chakra-ui/react';
+import { Avatar, Button, HStack, Text } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -12,12 +12,13 @@ export const Navbar = () => {
   const router = useRouter();
   const [session, setsession] = useState<any>();
   const [loading, setloading] = useState(true);
+console.log(session);
 
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
       console.log(res?.accessToken);
       if (!res?.accessToken) {
-        setsession(undefined)
+        setsession(undefined);
       } else {
         setloading(false);
         setsession(res);
@@ -27,10 +28,15 @@ export const Navbar = () => {
 
   return (
     <HStack w={'100%'} justify={'space-between'} p={'37px'}>
-      <Link href={'/'}>  
-      <Logo />
+      <Link href={'/'}>
+        <Logo />
       </Link>
-      {session?.accessToken  && <Avatar size={'sm'} onClick={onLogout}/>}
+      {session?.accessToken && (
+        <HStack>
+          <Text>{session.email}</Text>
+          <Avatar size={'sm'} onClick={onLogout} />
+        </HStack>
+      )}
     </HStack>
   );
 };

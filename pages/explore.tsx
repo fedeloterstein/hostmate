@@ -24,7 +24,7 @@ export default function Explore() {
   return (
     <Layout>
       <Heading>En contruccion 🚧🚀...</Heading>
-      <SimpleGrid columns={[1, 2, 3]} spacing={5} alignSelf={'center'}>
+      <SimpleGrid p={5} columns={[1, 2, 3]} spacing={5} alignSelf={'center'}>
         {dataAnfitriones &&
           dataAnfitriones.map((item: any, i: any) => {
             return <AnfitrionCard item={item} key={i} />;

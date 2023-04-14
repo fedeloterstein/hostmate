@@ -128,6 +128,18 @@ const StepOne = ({ setdata, data }: any) => {
       </Heading>
       <Avatar size={'xl'} src={session?.user?.image as string} />
       <Stack w={'475px'} pt={'26px'}>
+        <HStack>
+        <Input
+          placeholder="Name"
+          name="name"
+          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+        />
+          <Input
+          placeholder="Last Name"
+          name="lastName"
+          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+        />
+        </HStack>
         <Textarea
           placeholder="description"
           name="description"
