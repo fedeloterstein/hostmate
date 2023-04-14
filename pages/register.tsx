@@ -28,6 +28,7 @@ import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
 import { onAuthStateChanged } from 'firebase/auth';
 import { postUserData } from '@/api/FirestoreAPI';
+import { countries, propertiesType, languages, timeExperience, services } from '../data/data';
 
 export default function Register() {
   const [loading, setloading] = useState(true);
@@ -156,19 +157,23 @@ const StepOne = ({ setdata, data }: any) => {
           name="phone"
           onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
         />
-        <Input
+        <Select
           placeholder="location"
           name="location"
           onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        />
+        >
+          {countries.map((countri, index) => (
+            <option value={countri} key={index}>{countri}</option>
+          ))}
+        </Select>
         <Select
           placeholder="Type of properties you manage"
           name="propertiesType"
           onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
         >
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+              {propertiesType.map((propertieType, index) => (
+            <option value={propertieType} key={index}>{propertieType}</option>
+          ))}
         </Select>
         <HStack>
           <Select
@@ -176,18 +181,18 @@ const StepOne = ({ setdata, data }: any) => {
             name="languages"
             onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
           >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+              {languages.map((language, index) => (
+            <option value={language} key={index}>{language}</option>
+          ))}
           </Select>
           <Select
             placeholder="Time Experience"
             name="timeExperience"
             onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
           >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+              {timeExperience.map((time, index) => (
+            <option value={time} key={index}>{time}</option>
+          ))}
           </Select>
         </HStack>
         <Select
@@ -195,9 +200,9 @@ const StepOne = ({ setdata, data }: any) => {
           name="services"
           onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
         >
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+           {services.map((serv, index) => (
+            <option value={serv} key={index}>{serv}</option>
+          ))}
         </Select>
         <HStack justify={'space-between'}>
           <Text>% Fee management Per Reservation</Text>
