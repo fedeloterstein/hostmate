@@ -1,4 +1,3 @@
-import { Layout } from '@/components/Layout';
 import {
   Avatar,
   Button,
@@ -20,42 +19,47 @@ import {
   Textarea,
   useColorMode,
 } from '@chakra-ui/react';
-import { log } from 'console';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { app, database } from '../firebase';
+import { auth, database } from '@/firebase.config';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
+import { onAuthStateChanged } from 'firebase/auth';
+import { postUserData } from '@/api/FirestoreAPI';
 
 export default function Register() {
-  const { data: session } = useSession();
-
+  const [loading, setloading] = useState(true);
   const [step, setstep] = useState('one');
   const [data, setdata] = useState({});
   const router = useRouter();
-  const dbInstance = collection(database, 'users');
+  const [session, setsession] = useState();
 
   useEffect(() => {
-    if (!session) {
-      router.push('/');
-    }
-  }, [session]);
+    onAuthStateChanged(auth, (res: any) => {
+      if (!res?.accessToken) {
+        router.push('/');
+        setsession(undefined);
+      } else {
+        setloading(false);
+        setsession(res);
+      }
+    });
+  }, []);
+
 
   let porc = Object.keys(data).length / 10 * 100;
 
-  
- 
-
   const saveData = async () => {
-    const { name, email, image }: any = session?.user;
+    console.log('entre');
+    
+    const { email }: any = session;
     let user: any = data;
-    user.image = image;
-    user.email = email;
-    user.name = name;
-    setdata(user);
 
-    addDoc(dbInstance, user)
+    user.email = email;
+
+    setdata(user);
+    postUserData(user)
       .then(() => console.log('listo'))
       .then(() => router.push('/explore'));
   };
@@ -68,39 +72,42 @@ export default function Register() {
     }
   };
   return (
+    <>
     <Stack w={'100%'} h={'100vh'} align={'center'}>
       <Navbar />
 
       {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
 
-      <HStack justify={'space-between'} w={'100%'} p={'42px'} position={'absolute'} bottom={0}>
-        <CircularProgress value={porc} color="#3378FF">
-          <CircularProgressLabel>{porc}%</CircularProgressLabel>
-        </CircularProgress>
-        <HStack>
-          <Button
-            color={'white'}
-            size={'lg'}
-            variant="ghost"
-            bgClip="text"
-            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={() => router.push('/explore')}
-          >
-            Skip for now
-          </Button>
-          <Button
-            color={'white'}
-            size={'lg'}
-            variant={'solid'}
-            colorScheme="blue"
-            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={nextStep}
-          >
-            Next reviews
-          </Button>
-        </HStack>
-      </HStack>
+     
     </Stack>
+     <HStack justify={'space-between'} w={'100%'} p={'42px'} >
+     <CircularProgress value={porc} color="#3378FF">
+       <CircularProgressLabel>{porc}%</CircularProgressLabel>
+     </CircularProgress>
+     <HStack>
+       <Button
+         color={'white'}
+         size={'lg'}
+         variant="ghost"
+         bgClip="text"
+         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+         onClick={() => router.push('/explore')}
+       >
+         Skip for now
+       </Button>
+       <Button
+         color={'white'}
+         size={'lg'}
+         variant={'solid'}
+         colorScheme="blue"
+         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+         onClick={nextStep}
+       >
+         Next reviews
+       </Button>
+     </HStack>
+   </HStack>
+   </>
   );
 }
 
@@ -121,6 +128,18 @@ const StepOne = ({ setdata, data }: any) => {
       </Heading>
       <Avatar size={'xl'} src={session?.user?.image as string} />
       <Stack w={'475px'} pt={'26px'}>
+        <HStack>
+        <Input
+          placeholder="Name"
+          name="name"
+          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+        />
+          <Input
+          placeholder="Last Name"
+          name="lastName"
+          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+        />
+        </HStack>
         <Textarea
           placeholder="description"
           name="description"
@@ -196,7 +215,7 @@ const StepOne = ({ setdata, data }: any) => {
 };
 
 const StepTwo = () => {
-  return    <Heading>En contruccion 🚧🚀...</Heading>
+  return <Heading>En contruccion 🚧🚀...</Heading>;
 };
 /**
    <Layout>
