@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.12](https://github.com/fedeloterstein/hostmate/compare/v0.1.11...v0.1.12) (2023-04-14)
+
+
+### ✨ Features
+
+* add select options ([0631830](https://github.com/fedeloterstein/hostmate/commit/0631830efe50e1acf916c301b2b77e26c43f8000))
+
 ### [0.1.11](https://github.com/fedeloterstein/hostmate/compare/v0.1.10...v0.1.11) (2023-04-14)
 
 
