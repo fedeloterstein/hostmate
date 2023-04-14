@@ -1,4 +1,3 @@
-import { Layout } from '@/components/Layout';
 import {
   Avatar,
   Button,
@@ -20,42 +19,47 @@ import {
   Textarea,
   useColorMode,
 } from '@chakra-ui/react';
-import { log } from 'console';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { database } from '@/firebaseConfig';
+import { auth, database } from '@/firebaseConfig';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
+import { onAuthStateChanged } from 'firebase/auth';
+import { postUserData } from '@/api/FirestoreAPI';
 
 export default function Register() {
-  const { data: session } = useSession();
-
+  const [loading, setloading] = useState(true);
   const [step, setstep] = useState('one');
   const [data, setdata] = useState({});
   const router = useRouter();
-  const dbInstance = collection(database, 'users');
+  const [session, setsession] = useState();
 
   useEffect(() => {
-    if (!session) {
-      router.push('/');
-    }
-  }, [session]);
+    onAuthStateChanged(auth, (res: any) => {
+      if (!res?.accessToken) {
+        router.push('/');
+        setsession(undefined);
+      } else {
+        setloading(false);
+        setsession(res);
+      }
+    });
+  }, []);
 
-  let porc = Object.keys(data).length / 10 * 100;
 
-  
- 
+  let porc = 10;
 
   const saveData = async () => {
-    const { name, email, image }: any = session?.user;
+    console.log('entre');
+    
+    const { email }: any = session;
     let user: any = data;
-    user.image = image;
-    user.email = email;
-    user.name = name;
-    setdata(user);
 
-    addDoc(dbInstance, user)
+    user.email = email;
+
+    setdata(user);
+    postUserData(user)
       .then(() => console.log('listo'))
       .then(() => router.push('/explore'));
   };
@@ -196,7 +200,7 @@ const StepOne = ({ setdata, data }: any) => {
 };
 
 const StepTwo = () => {
-  return    <Heading>En contruccion 🚧🚀...</Heading>
+  return <Heading>En contruccion 🚧🚀...</Heading>;
 };
 /**
    <Layout>
