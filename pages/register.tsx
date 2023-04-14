@@ -23,7 +23,7 @@ import {
 import { log } from 'console';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { app, database } from '../firebase';
+import { database } from '@/firebaseConfig';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';

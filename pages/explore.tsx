@@ -1,9 +1,9 @@
 import { Layout } from '@/components/Layout';
 import { useEffect, useState } from 'react';
-import { database } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { Heading, SimpleGrid } from '@chakra-ui/react';
 import { AnfitrionCard } from '@/components/AnfitrionCard';
+import { database } from '@/firebaseConfig';
 
 export default function Explore() {
   const dbInstance = collection(database, 'users');

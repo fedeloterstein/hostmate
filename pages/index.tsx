@@ -20,7 +20,7 @@ import { Layout } from '@/components/Layout';
 import ProfileSelector from '@/components/ProfileSelector';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { app, database } from '../firebase';
+import { database } from '@/firebaseConfig';
 import { log } from 'console';
 import { useRouter } from 'next/router';
 import { Spinner } from '@chakra-ui/react';
