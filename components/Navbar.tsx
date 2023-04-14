@@ -1,7 +1,7 @@
 import { onLogout } from '@/api/AuthAPI';
 import { Logo } from '@/assets/icons/Logo';
 import { auth } from '@/firebase.config';
-import { Avatar, Button, HStack, Text } from '@chakra-ui/react';
+import { Avatar, Badge, Box, Button, HStack, Stack, Text } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -27,9 +27,12 @@ console.log(session);
   }, []);
 
   return (
-    <HStack w={'100%'} justify={'space-between'} p={'37px'}>
+    <Stack w={'100%'} justify={'space-between'} p={'37px'}    direction={['column', 'column', 'row']}>
       <Link href={'/'}>
+        <HStack>
         <Logo />
+        <Badge colorScheme='purple'>Beta v1</Badge>
+        </HStack>
       </Link>
       {session?.accessToken && (
         <HStack>
@@ -37,6 +40,6 @@ console.log(session);
           <Avatar size={'sm'} onClick={onLogout} />
         </HStack>
       )}
-    </HStack>
+    </Stack>
   );
 };

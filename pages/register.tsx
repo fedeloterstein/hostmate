@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Button,
   CircularProgress,
   CircularProgressLabel,
@@ -47,12 +48,11 @@ export default function Register() {
     });
   }, []);
 
-
-  let porc = Object.keys(data).length / 10 * 100;
+  let porc = (Object.keys(data).length / 10) * 100;
 
   const saveData = async () => {
     console.log('entre');
-    
+
     const { email }: any = session;
     let user: any = data;
 
@@ -73,41 +73,47 @@ export default function Register() {
   };
   return (
     <>
-    <Stack w={'100%'} h={'100vh'} align={'center'}>
-      <Navbar />
+      <Stack w={'100%'} h={'100vh'} align={'center'}>
+        <Navbar />
 
-      {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
+        {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
+      </Stack>
+      <Stack
+        justify={['center', 'space-between']}
+        w={'100%'}
+        p={'42px'}
+        direction={['column', 'column', 'row']}
+      >
+        <Box>
+          <CircularProgress value={porc} color="#3378FF">
+            <CircularProgressLabel>{porc}%</CircularProgressLabel>
+          </CircularProgress>
+        </Box>
 
-     
-    </Stack>
-     <HStack justify={'space-between'} w={'100%'} p={'42px'} >
-     <CircularProgress value={porc} color="#3378FF">
-       <CircularProgressLabel>{porc}%</CircularProgressLabel>
-     </CircularProgress>
-     <HStack>
-       <Button
-         color={'white'}
-         size={'lg'}
-         variant="ghost"
-         bgClip="text"
-         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-         onClick={() => router.push('/explore')}
-       >
-         Skip for now
-       </Button>
-       <Button
-         color={'white'}
-         size={'lg'}
-         variant={'solid'}
-         colorScheme="blue"
-         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-         onClick={nextStep}
-       >
-         Next reviews
-       </Button>
-     </HStack>
-   </HStack>
-   </>
+        <HStack>
+          <Button
+            color={'white'}
+            size={'lg'}
+            variant="ghost"
+            bgClip="text"
+            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+            onClick={() => router.push('/explore')}
+          >
+            Skip for now
+          </Button>
+          <Button
+            color={'white'}
+            size={'lg'}
+            variant={'solid'}
+            colorScheme="blue"
+            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+            onClick={nextStep}
+          >
+            Next reviews
+          </Button>
+        </HStack>
+      </Stack>
+    </>
   );
 }
 
@@ -127,18 +133,18 @@ const StepOne = ({ setdata, data }: any) => {
         Complete your profile as Host
       </Heading>
       <Avatar size={'xl'} src={session?.user?.image as string} />
-      <Stack w={'475px'} pt={'26px'}>
+      <Stack pt={'26px'} p={5}>
         <HStack>
-        <Input
-          placeholder="Name"
-          name="name"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        />
           <Input
-          placeholder="Last Name"
-          name="lastName"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        />
+            placeholder="Name"
+            name="name"
+            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+          />
+          <Input
+            placeholder="Last Name"
+            name="lastName"
+            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+          />
         </HStack>
         <Textarea
           placeholder="description"
