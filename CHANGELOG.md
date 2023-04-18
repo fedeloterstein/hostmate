@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.14](https://github.com/fedeloterstein/hostmate/compare/v0.1.13...v0.1.14) (2023-04-18)
+
+
+### ♻️Refactors
+
+* refactor forms ([70db12c](https://github.com/fedeloterstein/hostmate/commit/70db12c8b5dc61e803885fe21d2f236c0d7d8b91))
+
 ### [0.1.13](https://github.com/fedeloterstein/hostmate/compare/v0.1.12...v0.1.13) (2023-04-18)
 
 
