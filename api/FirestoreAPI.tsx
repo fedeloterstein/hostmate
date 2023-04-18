@@ -92,7 +92,7 @@ export const getCurrentUser = (setCurrentUser: any) => {
   });
 };
 
-export const editProfile = ({ userID, payload }: any) => {
+export const editProfile = ( userID: any, payload: any) => {
   let userToEdit = doc(userRef, userID);
 
   updateDoc(userToEdit, payload)
