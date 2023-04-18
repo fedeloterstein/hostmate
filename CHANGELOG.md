@@ -2,6 +2,18 @@
 
 ---
 
+### [0.1.13](https://github.com/fedeloterstein/hostmate/compare/v0.1.12...v0.1.13) (2023-04-18)
+
+
+### 👨‍💻 Chores
+
+* change avatar modal ([337cb63](https://github.com/fedeloterstein/hostmate/commit/337cb63b1f2cc36c9926e112ce6967ce0b9d40c0))
+
+
+### ✨ Features
+
+* add upload photo ([b517307](https://github.com/fedeloterstein/hostmate/commit/b517307ef1d743d4af9c1f7d00bf958587629aa5))
+
 ### [0.1.12](https://github.com/fedeloterstein/hostmate/compare/v0.1.11...v0.1.12) (2023-04-14)
 
 
