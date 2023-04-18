@@ -56,10 +56,10 @@ export const getSingleStatus = ({ setAllStatus, id }: any) => {
         return { ...docs.data(), id: docs.id };
       }),
     );
-  });
+  });   
 };
 
-export const getSingleUser = ({ setCurrentUser, email }: any) => {
+export const getSingleUser = ( setCurrentUser: any, email: any) => {
   const singleUserQuery = query(userRef, where('email', '==', email));
   onSnapshot(singleUserQuery, (response) => {
     setCurrentUser(
