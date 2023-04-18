@@ -51,11 +51,11 @@ export const Navbar = () => {
 console.log(currentProfile);
 
   return (
-    <Stack w={'100%'} justify={'space-between'} p={'37px'} direction={['column', 'column', 'row']}>
+    <Stack w={'100%'} justify={'space-between'} p={'37px'} direction={'row'}>
       <Link href={'/'}>
         <HStack>
           <Logo />
-          <Badge colorScheme="purple">v2</Badge>
+          <Badge colorScheme="purple">Beta v2</Badge>
         </HStack>
       </Link>
       {session?.accessToken && (
