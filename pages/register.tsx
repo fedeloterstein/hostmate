@@ -27,12 +27,12 @@ import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { Navbar } from '@/components/Navbar';
 import { onAuthStateChanged } from 'firebase/auth';
-import { postUserData } from '@/api/FirestoreAPI';
+import { postUserData, editProfile, getSingleUser } from '@/api/FirestoreAPI';
 import { countries, propertiesType, languages, timeExperience, services } from '../data/data';
+import { uploadImage as uploadImageAPI } from '../api/ImageUpload';
 
 export default function Register() {
   const [loading, setloading] = useState(true);
-  const [step, setstep] = useState('one');
   const [data, setdata] = useState({});
   const router = useRouter();
   const [session, setsession] = useState();
@@ -48,9 +48,27 @@ export default function Register() {
       }
     });
   }, []);
-
+     
   let porc = (Object.keys(data).length / 10) * 100;
 
+  const [currentImage, setcurrentImage] = useState({});
+  const [imageLink, setimageLink] = useState(null)
+  const getImage = (event: any) => {
+    setcurrentImage(event.target.files[0]);
+  };
+
+  const uploadImage = () => {
+    uploadImageAPI(currentImage, setimageLink);
+  };
+
+ 
+  
+
+  useEffect(() => {
+  
+  //editProfile()
+  }, [imageLink])
+  
   const saveData = async () => {
     console.log('entre');
 
@@ -58,6 +76,7 @@ export default function Register() {
     let user: any = data;
 
     user.email = email;
+    user.image = imageLink;
 
     setdata(user);
     postUserData(user)
@@ -65,19 +84,93 @@ export default function Register() {
       .then(() => router.push('/explore'));
   };
 
-  const nextStep = async () => {
-    if (step === 'one') {
-      setstep('two');
-    } else {
-      await saveData();
-    }
+  const saveProfile = async () => {
+    await saveData();
   };
   return (
     <>
       <Stack w={'100%'} h={'100vh'} align={'center'}>
         <Navbar />
+        <Heading
+          fontWeight={600}
+          fontSize={'40px'}
+          pt={'22px'}
+          pb={'22px'}
+          bgClip="text"
+          bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+        >
+          Complete your profile as Host
+        </Heading>
+        <Avatar
+          size={'xl'}
+          src={
+            'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+          }
+        />
 
-        {step === 'one' ? <StepOne setdata={setdata} data={data} /> : <StepTwo />}
+        <Stack pt={'26px'} p={5} gap={'18px'}>
+          <Input onChange={getImage} type="file" />
+          <Button onClick={uploadImage}>Subir Imagen</Button>
+          <HStack>
+            <Input
+              isRequired
+              placeholder="Name"
+              name="name"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            />
+            <Input
+              isRequired
+              placeholder="Last Name"
+              name="lastName"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            />
+          </HStack>
+          <Textarea
+            isRequired
+            placeholder="Airbnb Superhost with over 3 years of experience managing 25 properties, expert at creating exceptional guest experiences."
+            name="description"
+            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+          />
+          <Select
+            isRequired
+            placeholder="location"
+            name="location"
+            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+          >
+            {countries.map((countri, index) => (
+              <option value={countri} key={index}>
+                {countri}
+              </option>
+            ))}
+          </Select>
+          <HStack justify={'space-between'}>
+            <Text fontWeight={400} fontSize={'14px'} color={'black'}>
+              Airbnb Profile & Reviews
+            </Text>
+            <Input
+              maxW={'219px'}
+              placeholder="Airbnb profile URL"
+              name="urlProfileAirbnb"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            />
+          </HStack>
+          <HStack justify={'space-between'}>
+            <Text fontWeight={400} fontSize={'14px'} color={'black'}>
+              % Fee management Per Reservation
+            </Text>
+            <Select
+              isRequired
+              maxW={'219px'}
+              placeholder="Sele ct one"
+              name="fee"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            >
+              <option>6% - 10% Fee</option>
+              <option>🔥 10% - 15% (Most Popular)</option>
+              <option>15% - 20% Fee</option>
+            </Select>
+          </HStack>
+        </Stack>
       </Stack>
       <Stack
         justify={['center', 'space-between']}
@@ -108,178 +201,12 @@ export default function Register() {
             variant={'solid'}
             colorScheme="blue"
             bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-            onClick={nextStep}
+            onClick={saveProfile}
           >
-            Next reviews
+            Save Profile
           </Button>
         </HStack>
       </Stack>
     </>
   );
 }
-
-const StepOne = ({ setdata, data }: any) => {
-  const { data: session } = useSession();
-
-  return (
-    <>
-      <Heading
-        fontWeight={600}
-        fontSize={'40px'}
-        pt={'22px'}
-        pb={'22px'}
-        bgClip="text"
-        bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
-      >
-        Complete your profile as Host
-      </Heading>
-      <Avatar size={'xl'} src={session?.user?.image as string} />
-      <Stack pt={'26px'} p={5}>
-        <HStack>
-          <Input
-            placeholder="Name"
-            name="name"
-            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-          />
-          <Input
-            placeholder="Last Name"
-            name="lastName"
-            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-          />
-        </HStack>
-        <Textarea
-          placeholder="description"
-          name="description"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        />
-        <Input
-          placeholder="Phone Number"
-          name="phone"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        />
-        <Select
-          placeholder="location"
-          name="location"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        >
-          {countries.map((countri, index) => (
-            <option value={countri} key={index}>{countri}</option>
-          ))}
-        </Select>
-        <Select
-          placeholder="Type of properties you manage"
-          name="propertiesType"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        >
-              {propertiesType.map((propertieType, index) => (
-            <option value={propertieType} key={index}>{propertieType}</option>
-          ))}
-        </Select>
-        <HStack>
-          <Select
-            placeholder="Select languages"
-            name="languages"
-            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-          >
-              {languages.map((language, index) => (
-            <option value={language} key={index}>{language}</option>
-          ))}
-          </Select>
-          <Select
-            placeholder="Time Experience"
-            name="timeExperience"
-            onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-          >
-              {timeExperience.map((time, index) => (
-            <option value={time} key={index}>{time}</option>
-          ))}
-          </Select>
-        </HStack>
-        <Select
-          placeholder="Add management Services"
-          name="services"
-          onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-        >
-           {services.map((serv, index) => (
-            <option value={serv} key={index}>{serv}</option>
-          ))}
-        </Select>
-        <HStack justify={'space-between'}>
-          <Text>% Fee management Per Reservation</Text>
-          <NumberInput
-            defaultValue={5}
-            max={50}
-            clampValueOnBlur={false}
-            size={'sm'}
-            width={'80px'}
-          >
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-        </HStack>
-      </Stack>
-    </>
-  );
-};
-
-const StepTwo = () => {
-  return <Heading>En contruccion 🚧🚀...</Heading>;
-};
-/**
-   <Layout>
-      <Stack padding={10}>
-        <Stack>
-          <Heading pb={3}>Register</Heading>
-          <form onSubmit={handleSubmit}>
-            <Input
-              placeholder="Phone Number"
-              name="phone"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            />
-            <Input
-              placeholder="location"
-              name="location"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            />
-            <Textarea 
-             placeholder="description"
-             name="description"
-             onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            />
-            <Input
-              placeholder="years of Experience"
-              name="yearsExperience"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            />
-            <Input
-              placeholder="languages"
-              name="languages"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            />
-            <Select
-              placeholder="availability"
-              name="availability"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            >
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>
-            <Select
-              placeholder="rental terms"
-              name="rentalTerms"
-              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
-            >
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>
-            <Button type="submit">Guardar</Button>
-          </form>
-        </Stack>
-      </Stack>
-    </Layout>
- */
