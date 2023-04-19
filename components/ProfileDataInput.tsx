@@ -12,7 +12,7 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
   const [data, setdata] = useState<any>({});
 
   const getImage = (event: any) => {
-    setcurrentImage(event.target.files[0]);
+    uploadImageAPI(event.target.files[0], setimageLink);
   };
 
   const uploadImage = () => {
@@ -41,7 +41,6 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
 
       <Stack pt={'26px'} p={5} gap={'18px'}>
         <Input onChange={getImage} type="file" />
-        <Button onClick={uploadImage}>Subir Imagen</Button>
         <HStack>
           <Input
             isRequired
