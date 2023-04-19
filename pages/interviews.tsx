@@ -1,8 +1,6 @@
-import { onLogout } from '@/api/AuthAPI';
 import { Layout } from '@/components/Layout';
 import { auth } from '@/firebase.config';
 import {
-  Button,
   Heading,
   Spinner,
   Stack,
@@ -20,7 +18,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-export default function Exito() {
+export default function Interviews() {
   const router = useRouter();
   const [loading, setloading] = useState(true);
 
@@ -28,7 +26,7 @@ export default function Exito() {
     onAuthStateChanged(auth, (res: any) => {
       console.log(!res?.accessToken);
       if (!res?.accessToken) {
-        router.push('/newLogin');
+        router.push('/');
       } else {
         setloading(false);
       }
