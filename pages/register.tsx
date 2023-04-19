@@ -30,6 +30,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { postUserData, editProfile, getSingleUser } from '@/api/FirestoreAPI';
 import { countries, propertiesType, languages, timeExperience, services } from '../data/data';
 import { uploadImage as uploadImageAPI } from '../api/ImageUpload';
+import { Layout } from '@/components/Layout';
 
 export default function Register() {
   const [loading, setloading] = useState(false);
@@ -75,9 +76,8 @@ export default function Register() {
     await saveData();
   };
   return (
-    <>
+    <Layout>
       <Stack w={'100%'} h={'100vh'} align={'center'}>
-        <Navbar />
         <Heading
           fontWeight={600}
           fontSize={'40px'}
@@ -189,6 +189,6 @@ export default function Register() {
           </Button>
         </HStack>
       </Stack>
-    </>
+    </Layout>
   );
 }
