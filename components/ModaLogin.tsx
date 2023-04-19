@@ -76,8 +76,8 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
           <Stack justify={'center'} align={'center'} p={0}>
             <Tabs>
               <TabList>
-                <Tab>Become a Host</Tab>
-                <Tab>I’m property owner</Tab>
+                <Tab>Register</Tab>
+                <Tab>Login</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
