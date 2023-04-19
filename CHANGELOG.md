@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.15](https://github.com/fedeloterstein/hostmate/compare/v0.1.14...v0.1.15) (2023-04-18)
+
+
+### 🐛 Bug Fixes
+
+* fix direction navbar ([6ae10d1](https://github.com/fedeloterstein/hostmate/commit/6ae10d13d41918333ae65bb4554989fdd1c57486))
+
 ### [0.1.14](https://github.com/fedeloterstein/hostmate/compare/v0.1.13...v0.1.14) (2023-04-18)
 
 
