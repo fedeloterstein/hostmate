@@ -30,9 +30,10 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { postUserData, editProfile, getSingleUser } from '@/api/FirestoreAPI';
 import { countries, propertiesType, languages, timeExperience, services } from '../data/data';
 import { uploadImage as uploadImageAPI } from '../api/ImageUpload';
+import { Layout } from '@/components/Layout';
 
 export default function Register() {
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
   const [data, setdata] = useState({});
   const router = useRouter();
   const [session, setsession] = useState();
@@ -43,40 +44,27 @@ export default function Register() {
         router.push('/');
         setsession(undefined);
       } else {
-        setloading(false);
         setsession(res);
       }
     });
   }, []);
-     
-  let porc = (Object.keys(data).length / 10) * 100;
 
-  const [currentImage, setcurrentImage] = useState();
-  const [imageLink, setimageLink] = useState(null)
+  let porc = (Object.keys(data).length / 6) * 100;
+
+  const [imageLink, setimageLink] = useState(null);
   const getImage = (event: any) => {
-    setcurrentImage(event.target.files[0]);
+    setloading(true);
+    uploadImageAPI(event.target.files[0], setimageLink, setloading);
   };
 
-  const uploadImage = () => {
-    uploadImageAPI(currentImage, setimageLink);
-  };
-
- 
-  
-
-  useEffect(() => {
-  
-  //editProfile()
-  }, [imageLink])
-  
   const saveData = async () => {
-    console.log('entre');
-
     const { email }: any = session;
     let user: any = data;
 
     user.email = email;
-    user.image = imageLink;
+    if (imageLink != null) {
+      user.image = imageLink;
+    }
 
     setdata(user);
     postUserData(user)
@@ -88,9 +76,8 @@ export default function Register() {
     await saveData();
   };
   return (
-    <>
+    <Layout>
       <Stack w={'100%'} h={'100vh'} align={'center'}>
-        <Navbar />
         <Heading
           fontWeight={600}
           fontSize={'40px'}
@@ -101,14 +88,10 @@ export default function Register() {
         >
           Complete your profile as Host
         </Heading>
-        <Avatar
-          size={'xl'}
-          src={currentImage}
-        />
+        <Avatar size={'xl'} />
 
         <Stack pt={'26px'} p={5} gap={'18px'}>
           <Input onChange={getImage} type="file" />
-          <Button onClick={uploadImage}>Subir Imagen</Button>
           <HStack>
             <Input
               isRequired
@@ -163,9 +146,9 @@ export default function Register() {
               name="fee"
               onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
             >
-              <option>6% - 10% Fee</option>
-              <option>🔥 10% - 15% (Most Popular)</option>
-              <option>15% - 20% Fee</option>
+              <option value={'6-10'}>6% - 10% Fee</option>
+              <option value={'10-15'}>🔥 10% - 15% (Most Popular)</option>
+              <option value={'15-20'}>15% - 20% Fee</option>
             </Select>
           </HStack>
         </Stack>
@@ -177,8 +160,8 @@ export default function Register() {
         direction={['column', 'column', 'row']}
       >
         <Box>
-          <CircularProgress value={porc} color="#3378FF">
-            <CircularProgressLabel>{porc}%</CircularProgressLabel>
+          <CircularProgress value={Math.trunc(porc) } color="#3378FF">
+            <CircularProgressLabel>{Math.trunc(porc) }%</CircularProgressLabel>
           </CircularProgress>
         </Box>
 
@@ -200,11 +183,12 @@ export default function Register() {
             colorScheme="blue"
             bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
             onClick={saveProfile}
+            isLoading={loading}
           >
             Save Profile
           </Button>
         </HStack>
       </Stack>
-    </>
+    </Layout>
   );
 }
