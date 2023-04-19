@@ -1,11 +1,40 @@
+import { getSingleUser } from '@/api/FirestoreAPI';
 import { AirbnbIcon } from '@/assets/icons/AirbnbIcon';
 import { LocationIcon } from '@/assets/icons/LocationIcon';
 import { MdStartOutlineIcon } from '@/assets/icons/MdStartOutlineIcon';
+import { auth } from '@/firebase.config';
 import { Avatar, Button, HStack, Heading, Stack, Tag, Text } from '@chakra-ui/react';
-import React from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
 export const AnfitrionCard = ({ item }: any) => {
-  const { image, fee, location, name, description } = item;
+  const { image, fee, location, name, description, id } = item;
+  const router = useRouter();
+  const [session, setsession] = useState<any>();
+  const [loading, setloading] = useState(true);
+
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (res: any) => {
+      console.log(res?.accessToken);
+      if (!res?.accessToken) {
+        setsession(undefined);
+      } else {
+        setloading(false);
+        setsession(res);
+      }
+    });
+  }, []);
+
+  const onclick = () => {
+    if (session) {
+      router.push(`/request-meeting/${id}`)
+    } else {
+      alert('debes hacer login')
+    }
+  }
+  
   return (
     <Stack
       w={'319px'}
@@ -45,6 +74,7 @@ export const AnfitrionCard = ({ item }: any) => {
         <AirbnbIcon />
       </Stack>
       <Button
+      onClick={onclick}
         color={'white'}
         size={'lg'}
         variant={'solid'}

@@ -70,7 +70,7 @@ console.log(currentProfile);
             <MenuItem>{currentProfile?.email}</MenuItem>
             <MenuDivider />
             <MenuItem as={Link} href={'/profile'}>Profile</MenuItem>
-            <MenuItem>Interviews</MenuItem>
+            <MenuItem as={Link} href={'/interviews'}>Interviews</MenuItem>
             <MenuDivider />
             <MenuItem color={'red'}  onClick={onLogout} >Logout</MenuItem>
           </MenuList>
