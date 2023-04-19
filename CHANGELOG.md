@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.18](https://github.com/fedeloterstein/hostmate/compare/v0.1.17...v0.1.18) (2023-04-19)
+
+
+### 🐛 Bug Fixes
+
+* fix logout route ([cb3c2b0](https://github.com/fedeloterstein/hostmate/commit/cb3c2b005656b2019ab0cd14913084ff8b85deba))
+
 ### [0.1.17](https://github.com/fedeloterstein/hostmate/compare/v0.1.16...v0.1.17) (2023-04-19)
 
 
