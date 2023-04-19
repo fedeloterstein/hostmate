@@ -10,9 +10,11 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
   const [currentImage, setcurrentImage] = useState();
   const [imageLink, setimageLink] = useState(null);
   const [data, setdata] = useState<any>({});
+  const [loading, setloading] = useState(false);
 
   const getImage = (event: any) => {
-    uploadImageAPI(event.target.files[0], setimageLink);
+    setloading(true)
+    uploadImageAPI(event.target.files[0], setimageLink, setloading);
   };
 
   const uploadImage = () => {
@@ -20,16 +22,19 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
   };
 
   const saveData = async () => {
-    console.log('entre');
+    setloading(true)
 
     const { email }: any = session;
     let user: any = data;
 
     user.email = email;
-    user.image = imageLink;
+    if (imageLink != null) {
+      user.image = imageLink;
+    }
 
     setdata(user);
     editProfile(currentProfile.id, user);
+    setloading(false)
   };
 
   const saveProfile = async () => {
@@ -95,14 +100,15 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
             name="fee"
             onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
           >
-            <option>6% - 10% Fee</option>
-            <option>🔥 10% - 15% (Most Popular)</option>
-            <option>15% - 20% Fee</option>
+            <option value={'6-10'}>6% - 10% Fee</option>
+            <option value={'10-15'}>🔥 10% - 15% (Most Popular)</option>
+            <option value={'15-20'}>15% - 20% Fee</option>
           </Select>
         </HStack>
       </Stack>
       <Stack justify={['center']} w={'100%'} p={'42px'} direction={['column', 'column', 'row']}>
         <Button
+          isLoading={loading}
           color={'white'}
           size={'lg'}
           variant={'solid'}

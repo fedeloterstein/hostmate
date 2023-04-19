@@ -1,16 +1,11 @@
+import { AirbnbIcon } from '@/assets/icons/AirbnbIcon';
+import { LocationIcon } from '@/assets/icons/LocationIcon';
 import { MdStartOutlineIcon } from '@/assets/icons/MdStartOutlineIcon';
 import { Avatar, Button, HStack, Heading, Stack, Tag, Text } from '@chakra-ui/react';
 import React from 'react';
 
 export const AnfitrionCard = ({ item }: any) => {
-  const {
-    image,
-
-    location,
-
-    name,
-    description,
-  } = item;
+  const { image, fee, location, name, description } = item;
   return (
     <Stack
       w={'319px'}
@@ -21,17 +16,34 @@ export const AnfitrionCard = ({ item }: any) => {
       p={'27px'}
       align={'center'}
       justify={'center'}
+      position={'relative'}
     >
       <Avatar size={'xl'} src={image} mb={'9px'} />
+      <Stack justify={'center'} align={'center'} position={'absolute'} right={0} top={3} pr={4}>
+        <Text
+          bgClip="text"
+          bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+          fontWeight={700}
+          fontSize={'16px'}
+        >
+          {fee}% Fee
+        </Text>
+      </Stack>
       <Text mb={'7px'} fontWeight={700} fontSize={'14px'} color={'#4A4A4A'}>
         {name}
       </Text>
-      <Text mb={'5px'} fontWeight={500} fontSize={'12px'}>
-        📍{location}
-      </Text>
+      <HStack mb={'5px'}>
+        <LocationIcon />
+        <Text fontWeight={500} fontSize={'12px'}>
+          {location}
+        </Text>
+      </HStack>
       <Text mb={'11px'} fontWeight={500} fontSize={'12px'} textAlign={'center'}>
         {description}
       </Text>
+      <Stack pb={'11px'}>
+        <AirbnbIcon />
+      </Stack>
       <Button
         color={'white'}
         size={'lg'}

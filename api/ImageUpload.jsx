@@ -5,6 +5,7 @@ import { editProfile } from "./FirestoreAPI";
 export const uploadImage = (
   file,
   setimageLink,
+  setloading, 
   id,
   setModalOpen,
   setProgress,
@@ -28,6 +29,7 @@ export const uploadImage = (
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((response) => {
         setimageLink(response);
+        setloading(false)
       });
     }
   );
