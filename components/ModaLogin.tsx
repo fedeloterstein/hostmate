@@ -98,6 +98,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       name="email"
                       placeholder="email"
                       mb={"12px"}
+                      type='email'
                     />
                     <Input
                       onChange={(e) =>
@@ -105,6 +106,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       }
                       name="pass"
                       placeholder="pass"
+                      type='password'
                     />
                     <Button
                       onClick={register}
@@ -143,6 +145,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       }
                       name="pass"
                       placeholder="pass"
+                      type='password'
                      
                     />
                     <Button 
