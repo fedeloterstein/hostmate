@@ -2,6 +2,17 @@
 
 ---
 
+### [0.1.16](https://github.com/fedeloterstein/hostmate/compare/v0.1.15...v0.1.16) (2023-04-19)
+
+
+### ♻️Refactors
+
+* explore page ([bafa708](https://github.com/fedeloterstein/hostmate/commit/bafa708f4bab9a2b40ef8855d45160dc4e43b84c))
+* login modal ([828da84](https://github.com/fedeloterstein/hostmate/commit/828da84cacc3940b05ff1f3f1cab9f3d4ec5c0e1))
+* login modal ([f1a99db](https://github.com/fedeloterstein/hostmate/commit/f1a99db44f149b912794bdd36916bd57d2aadb37))
+* profile edit ([74c36e7](https://github.com/fedeloterstein/hostmate/commit/74c36e78079f03da6d1ad6f63dee0c5ce769b0cc))
+* register page ([39aa27b](https://github.com/fedeloterstein/hostmate/commit/39aa27b79b18c465a4bc578109f221811fe73a86))
+
 ### [0.1.15](https://github.com/fedeloterstein/hostmate/compare/v0.1.14...v0.1.15) (2023-04-18)
 
 
