@@ -23,7 +23,7 @@ export default function Interviews() {
   const router = useRouter();
   const [loading, setloading] = useState(true);
   const [session, setsession] = useState<any>();
-  const [meets, setmeets] = useState<any>([]);
+  const [meets, setmeets] = useState<any[]>([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
@@ -86,7 +86,7 @@ export default function Interviews() {
           </Thead>
           <Tbody>
             {meets &&
-              [meets].map((meet: any, index: any) => {
+              meets.map((meet: any, index: any) => {
                 return (
                   <Tr key={index}>
                     <Td>{meet.from}</Td>
