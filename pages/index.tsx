@@ -1,6 +1,4 @@
-'use client';
 import { Button, HStack, Heading, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
-import { TikTok } from 'react-tiktok';
 import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { ModaLogin } from '@/components/ModaLogin';
