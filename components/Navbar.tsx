@@ -30,7 +30,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
-      console.log(res?.accessToken);
       if (!res?.accessToken) {
         setsession(undefined);
       } else {
@@ -48,8 +47,6 @@ export const Navbar = () => {
 
   }, [session])
   
-console.log(currentProfile);
-
   return (
     <Stack w={'100%'} justify={'space-between'} p={'37px'} direction={'row'}>
       <Link href={'/'}>

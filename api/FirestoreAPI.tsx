@@ -15,6 +15,7 @@ import {
 
 let postsRef = collection(firestore, 'posts');
 let userRef = collection(firestore, 'users');
+let meetRef = collection(firestore, 'meets');
 let likeRef = collection(firestore, 'likes');
 let commentsRef = collection(firestore, 'comments');
 let connectionRef = collection(firestore, 'connections');
@@ -78,6 +79,14 @@ export const postUserData = (object: any) => {
     });
 };
 
+export const postMeetData = (object: any) => {
+  return addDoc(meetRef, object)
+    .then(() => {})
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 export const getCurrentUser = (setCurrentUser: any) => {
   onSnapshot(userRef, (response) => {
     setCurrentUser(
@@ -85,12 +94,25 @@ export const getCurrentUser = (setCurrentUser: any) => {
         .map((docs) => {
           return { ...docs.data(), id: docs.id };
         })
+      
+    );
+  });
+};
+
+export const getMeetUser = (setMeetsUser: any, email: any) => {
+    onSnapshot(meetRef, (response) => {
+    setMeetsUser(
+      response.docs
+        .map((docs) => {
+          return { ...docs.data(), id: docs.id };
+        })
         .filter((item: any) => {
-          return item.email === localStorage.getItem('userEmail');
+          return item.to === email;
         })[0],
     );
   });
 };
+
 
 export const editProfile = ( userID: any, payload: any) => {
   let userToEdit = doc(userRef, userID);

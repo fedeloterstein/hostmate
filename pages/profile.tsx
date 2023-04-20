@@ -16,7 +16,6 @@ export default function Prfile() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
-      console.log(!res?.accessToken);
       if (!res?.accessToken) {
         router.push('/');
       } else {
