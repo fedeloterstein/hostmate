@@ -2,6 +2,18 @@
 
 ---
 
+### [0.1.21](https://github.com/fedeloterstein/hostmate/compare/v0.1.20...v0.1.21) (2023-04-20)
+
+
+### ✨ Features
+
+* add link profiles ([17e4125](https://github.com/fedeloterstein/hostmate/commit/17e412564f15da3457836db08449210487bbde11))
+
+
+### 🐛 Bug Fixes
+
+* add link profiles ([a618e24](https://github.com/fedeloterstein/hostmate/commit/a618e24cb90ec6806f64b74ac11e744cb8bfd423))
+
 ### [0.1.20](https://github.com/fedeloterstein/hostmate/compare/v0.1.19...v0.1.20) (2023-04-20)
 
 
