@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export const AnfitrionCard = ({ item }: any) => {
-  const { image, fee, location, name, description, id } = item;
+  const { image, fee, location, name, description, id, email } = item;
   const router = useRouter();
   const [session, setsession] = useState<any>();
   const [loading, setloading] = useState(true);
@@ -17,7 +17,6 @@ export const AnfitrionCard = ({ item }: any) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
-      console.log(res?.accessToken);
       if (!res?.accessToken) {
         setsession(undefined);
       } else {
@@ -29,7 +28,7 @@ export const AnfitrionCard = ({ item }: any) => {
 
   const onclick = () => {
     if (session) {
-      router.push(`/request-meeting/${id}`)
+      router.push(`/request-meeting/${email}`)
     } else {
       alert('debes hacer login')
     }
