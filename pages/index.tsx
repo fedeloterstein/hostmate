@@ -1,5 +1,4 @@
-import { Button, Heading, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
-
+import { Button, HStack, Heading, Image, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { ModaLogin } from '@/components/ModaLogin';
@@ -25,16 +24,34 @@ export default function Home() {
           bgClip="text"
           bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
         >
-          Problems managing your rental space?
+          Become a professional host  and earn extra income
         </Heading>
         <Text pt={'13px'} pb={'13px'} fontWeight={400} fontSize={'20px'} color={'black'}>
-          AI help you find the perfect Host for your rental space management.
+          We help you connect with homeowners to help them manage and boost their rental space.
         </Text>
-        <Text fontWeight={400} fontSize={'16px'} color={'#A0A8D4'} maxW={'736px'} align={'center'}>
-          “Hosts are the person between the property owners and guest, they help the homeowners that
-          don’t have time to manage their rent spaces, to taking care of their accommodation and
-          guests and boosting his rental spaces for a fee.”
-        </Text>
+        <Button
+          color={'white'}
+          size={'lg'}
+          variant={'solid'}
+          colorScheme="blue"
+          bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+          onClick={onOpen}
+        >
+          Become a Host
+        </Button>
+        <HStack>
+          <Text>🔥</Text>
+          <Text
+            fontWeight={400}
+            fontSize={'12px'}
+            bgClip="text"
+            bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+            maxW={'736px'}
+            align={'center'}
+          >
+            Monthly earning potential $1k-2k
+          </Text>
+        </HStack>
         <Stack
           pt={'77px'}
           pb={'59px'}
@@ -118,46 +135,3 @@ export default function Home() {
     </Layout>
   );
 }
-
-/**
- import { Layout } from '@/components/Layout';
-import ProfileSelector from '@/components/ProfileSelector';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { app, database } from '../firebase';
-import { log } from 'console';
-import { useRouter } from 'next/router';
-import { Spinner } from '@chakra-ui/react';
-import { useSession } from 'next-auth/react';
-const dbInstance = collection(database, 'users');
-
-export default function Home() {
-  const { data: session } = useSession();
-  const [data, setdata] = useState<any>();
-
-  const router = useRouter();
-  const getByEmail = async () => {
-    const q = query(dbInstance, where('email', '==', session?.user?.email));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      if (doc.data() !== undefined) {
-        router.push('/explore');
-      }
-      setdata(doc.data());
-    });
-  };
-  useEffect(() => {
-    if (session) {
-      
-      getByEmail();
-    }
-  }, [session]);
-
-  return (
-    <Layout>
-      {data === undefined && <ProfileSelector />}
-    </Layout>
-  );
-}
-
- */

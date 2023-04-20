@@ -3,13 +3,13 @@ import { AirbnbIcon } from '@/assets/icons/AirbnbIcon';
 import { LocationIcon } from '@/assets/icons/LocationIcon';
 import { MdStartOutlineIcon } from '@/assets/icons/MdStartOutlineIcon';
 import { auth } from '@/firebase.config';
-import { Avatar, Button, HStack, Heading, Stack, Tag, Text } from '@chakra-ui/react';
+import { Avatar, Button, HStack, Heading, Link, Stack, Tag, Text } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export const AnfitrionCard = ({ item }: any) => {
-  const { image, fee, location, name, description, id, email } = item;
+  const { image, fee, location, name, description, id, email, urlProfileAirbnb } = item;
   const router = useRouter();
   const [session, setsession] = useState<any>();
   const [loading, setloading] = useState(true);
@@ -70,7 +70,10 @@ export const AnfitrionCard = ({ item }: any) => {
         {description}
       </Text>
       <Stack pb={'11px'}>
+        <Link href={urlProfileAirbnb} isExternal>
+        
         <AirbnbIcon />
+        </Link>
       </Stack>
       <Button
       onClick={onclick}
