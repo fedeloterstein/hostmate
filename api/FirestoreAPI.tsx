@@ -108,7 +108,7 @@ export const getMeetUser = (setMeetsUser: any, email: any) => {
         })
         .filter((item: any) => {
           return item.to === email;
-        })[0],
+        }),
     );
   });
 };
