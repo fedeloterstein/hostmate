@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.20](https://github.com/fedeloterstein/hostmate/compare/v0.1.19...v0.1.20) (2023-04-20)
+
+
+### 🐛 Bug Fixes
+
+* create meetings ([fd0ff19](https://github.com/fedeloterstein/hostmate/commit/fd0ff196ca37deef96889696ea5332516c52bb14))
+
 ### [0.1.19](https://github.com/fedeloterstein/hostmate/compare/v0.1.18...v0.1.19) (2023-04-20)
 
 
