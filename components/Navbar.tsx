@@ -52,7 +52,7 @@ export const Navbar = () => {
       <Link href={'/'}>
         <HStack>
           <Logo />
-          <Badge colorScheme="purple">Beta v2</Badge>
+          <Badge colorScheme="purple">Beta v3</Badge>
         </HStack>
       </Link>
       {session?.accessToken && (
