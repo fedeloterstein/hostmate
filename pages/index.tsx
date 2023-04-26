@@ -2,6 +2,7 @@ import { Button, HStack, Heading, Image, Stack, Text, useDisclosure } from '@cha
 import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { ModaLogin } from '@/components/ModaLogin';
+import Script from 'next/script';
 
 const origin = typeof window === 'undefined' ? '' : window.location.origin;
 const img1 = `${origin}/images/home1.png`;
@@ -14,6 +15,16 @@ export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Layout>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4QT5BM9QX" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-Z4QT5BM9QX);
+        `}
+      </Script>
       <Stack w={'100%'} justify={'flex-start'} align={'center'} bg={'white'}>
         <Image src={img3} />
         <ModaLogin isOpen={isOpen} onClose={onClose} />
