@@ -1,24 +1,14 @@
 import { Layout } from '@/components/Layout';
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
 import { Heading, SimpleGrid, Stack } from '@chakra-ui/react';
 import { AnfitrionCard } from '@/components/AnfitrionCard';
-import { database } from '@/firebase.config';
+import { getAllUsers } from '@/api/FirestoreAPI';
 
 export default function Explore() {
-  const dbInstance = collection(database, 'users');
   const [dataAnfitriones, setdataAnfitriones] = useState<any>();
-  const getProfiles = () => {
-    getDocs(dbInstance).then((data) => {
-      setdataAnfitriones(
-        data.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      );
-    });
-  };
+
   useEffect(() => {
-    getProfiles();
+    getAllUsers(setdataAnfitriones);
   }, []);
 
   return (

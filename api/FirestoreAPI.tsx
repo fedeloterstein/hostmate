@@ -39,11 +39,14 @@ export const getStatus = ({ setAllStatus }: any) => {
   });
 };
 
-export const getAllUsers = ({ setAllUsers }: any) => {
+export const getAllUsers = (setAllUsers: any) => {
   onSnapshot(userRef, (response) => {
     setAllUsers(
       response.docs.map((docs) => {
         return { ...docs.data(), id: docs.id };
+      })
+      .filter((item: any) => {
+        return item.typeUser !== 'owner';
       }),
     );
   });
@@ -57,10 +60,10 @@ export const getSingleStatus = ({ setAllStatus, id }: any) => {
         return { ...docs.data(), id: docs.id };
       }),
     );
-  });   
+  });
 };
 
-export const getSingleUser = ( setCurrentUser: any, email: any) => {
+export const getSingleUser = (setCurrentUser: any, email: any) => {
   const singleUserQuery = query(userRef, where('email', '==', email));
   onSnapshot(singleUserQuery, (response) => {
     setCurrentUser(
@@ -90,17 +93,15 @@ export const postMeetData = (object: any) => {
 export const getCurrentUser = (setCurrentUser: any) => {
   onSnapshot(userRef, (response) => {
     setCurrentUser(
-      response.docs
-        .map((docs) => {
-          return { ...docs.data(), id: docs.id };
-        })
-      
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      }),
     );
   });
 };
 
 export const getMeetUser = (setMeetsUser: any, email: any) => {
-    onSnapshot(meetRef, (response) => {
+  onSnapshot(meetRef, (response) => {
     setMeetsUser(
       response.docs
         .map((docs) => {
@@ -113,8 +114,7 @@ export const getMeetUser = (setMeetsUser: any, email: any) => {
   });
 };
 
-
-export const editProfile = ( userID: any, payload: any) => {
+export const editProfile = (userID: any, payload: any) => {
   let userToEdit = doc(userRef, userID);
 
   updateDoc(userToEdit, payload)

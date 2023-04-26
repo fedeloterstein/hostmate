@@ -105,6 +105,21 @@ const ProfileDataInput = ({ session, currentProfile }: any) => {
             <option value={'15-20'}>15% - 20% Fee</option>
           </Select>
         </HStack>
+        <HStack justify={'space-between'}>
+            <Text fontWeight={400} fontSize={'14px'} color={'black'}>
+            {`I'm a person that`}
+            </Text>
+            <Select
+              isRequired
+              maxW={'219px'}
+              placeholder="Select one"
+              name="typeUser"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            >
+              <option value={'host'}>👤 Management Properties</option>
+              <option value={'owner'}>🏠 I own property</option>
+            </Select>
+          </HStack>
       </Stack>
       <Stack justify={['center']} w={'100%'} p={'42px'} direction={['column', 'column', 'row']}>
         <Button
