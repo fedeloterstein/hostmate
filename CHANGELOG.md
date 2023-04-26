@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.23](https://github.com/fedeloterstein/hostmate/compare/v0.1.22...v0.1.23) (2023-04-26)
+
+
+### ✨ Features
+
+* add filter users and feedback button ([20677e5](https://github.com/fedeloterstein/hostmate/commit/20677e5a66509e2d3cd1a8a05c69a5610480afbe))
+
 ### [0.1.22](https://github.com/fedeloterstein/hostmate/compare/v0.1.21...v0.1.22) (2023-04-26)
 
 
