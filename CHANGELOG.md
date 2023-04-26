@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.22](https://github.com/fedeloterstein/hostmate/compare/v0.1.21...v0.1.22) (2023-04-26)
+
+
+### ✨ Features
+
+* add google analytics ([ea9b588](https://github.com/fedeloterstein/hostmate/commit/ea9b588583dce236f7228a52a8e35eff4f64314d))
+
 ### [0.1.21](https://github.com/fedeloterstein/hostmate/compare/v0.1.20...v0.1.21) (2023-04-20)
 
 
