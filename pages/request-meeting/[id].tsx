@@ -1,40 +1,17 @@
-import { onLogout } from '@/api/AuthAPI';
 import { postMeetData } from '@/api/FirestoreAPI';
 import { Layout } from '@/components/Layout';
-import { auth } from '@/firebase.config';
-import {
-  Button,
-  Center,
-  HStack,
-  Heading,
-  Input,
-  Spinner,
-  Stack,
-  Textarea,
-  useToast,
-} from '@chakra-ui/react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { useSessionWithRedirect } from '@/hooks/useSessionWithRedirect';
+import { Button, HStack, Heading, Spinner, Stack, Textarea, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function RequestMeeting() {
   const router = useRouter();
-  const [loading, setloading] = useState(true);
   const [data, setdata] = useState<any>({});
-  const [session, setsession] = useState<any>();
   const { id } = router.query;
   const toast = useToast();
-  useEffect(() => {
-    onAuthStateChanged(auth, (res: any) => {
-      if (!res?.accessToken) {
-        router.push('/');
-        setsession(undefined);
-      } else {
-        setsession(res);
-        setloading(false);
-      }
-    });
-  }, []);
+
+  const { session, loading } = useSessionWithRedirect('/');
 
   const onClick = () => {
     let meet: any = {};

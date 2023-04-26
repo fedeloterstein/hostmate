@@ -1,11 +1,9 @@
 import { onLogout } from '@/api/AuthAPI';
 import { getSingleUser } from '@/api/FirestoreAPI';
 import { Logo } from '@/assets/icons/Logo';
-import { auth } from '@/firebase.config';
+import { useSession } from '@/hooks/useSession';
 import {
   Avatar,
-  Badge,
-  Box,
   Button,
   HStack,
   Menu,
@@ -14,32 +12,15 @@ import {
   MenuItem,
   MenuList,
   Stack,
-  Text,
   Link as LinkC,
 } from '@chakra-ui/react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export const Navbar = () => {
-  const router = useRouter();
-  const [session, setsession] = useState<any>();
-  const [loading, setloading] = useState(true);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (res: any) => {
-      if (!res?.accessToken) {
-        setsession(undefined);
-      } else {
-        setloading(false);
-        setsession(res);
-      }
-    });
-  }, []);
-
+  const { session } = useSession();
   const [currentProfile, setcurrentProfile] = useState<any>({});
+
   useEffect(() => {
     if (session) {
       getSingleUser(setcurrentProfile, session.email);

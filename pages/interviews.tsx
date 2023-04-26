@@ -1,48 +1,29 @@
 import { getMeetUser } from '@/api/FirestoreAPI';
 import { Layout } from '@/components/Layout';
-import { auth } from '@/firebase.config';
+import { useSessionWithRedirect } from '@/hooks/useSessionWithRedirect';
 import {
   Heading,
   Spinner,
   Stack,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export default function Interviews() {
-  const router = useRouter();
-  const [loading, setloading] = useState(true);
-  const [session, setsession] = useState<any>();
   const [meets, setmeets] = useState<any[]>([]);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (res: any) => {
-      if (!res?.accessToken) {
-        router.push('/');
-        setsession(undefined);
-      } else {
-        setsession(res);
-        setloading(false);
-      }
-    });
-  }, []);
+  const { session, loading } = useSessionWithRedirect('/');
 
   useEffect(() => {
     if (session) {
       getMeetUser(setmeets, session.email);
     }
   }, [session]);
-  console.log(meets);
 
   return loading ? (
     <Stack h={'100vh'} justify={'center'} align={'center'} p={20}>

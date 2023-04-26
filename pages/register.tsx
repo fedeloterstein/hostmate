@@ -4,50 +4,26 @@ import {
   Button,
   CircularProgress,
   CircularProgressLabel,
-  Container,
   HStack,
   Heading,
   Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Progress,
   Select,
   Stack,
   Text,
   Textarea,
-  useColorMode,
 } from '@chakra-ui/react';
-import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
-import { auth, database } from '@/firebase.config';
-import { collection, addDoc, updateDoc } from 'firebase/firestore';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Navbar } from '@/components/Navbar';
-import { onAuthStateChanged } from 'firebase/auth';
-import { postUserData, editProfile, getSingleUser } from '@/api/FirestoreAPI';
-import { countries, propertiesType, languages, timeExperience, services } from '../data/data';
+import { postUserData } from '@/api/FirestoreAPI';
+import { countries } from '../data/data';
 import { uploadImage as uploadImageAPI } from '../api/ImageUpload';
 import { Layout } from '@/components/Layout';
+import { useSessionWithRedirect } from '@/hooks/useSessionWithRedirect';
 
 export default function Register() {
-  const [loading, setloading] = useState(false);
   const [data, setdata] = useState({});
   const router = useRouter();
-  const [session, setsession] = useState();
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (res: any) => {
-      if (!res?.accessToken) {
-        router.push('/');
-        setsession(undefined);
-      } else {
-        setsession(res);
-      }
-    });
-  }, []);
+  const { session, loading, setloading } = useSessionWithRedirect('/');
 
   let porc = (Object.keys(data).length / 6) * 100;
 
@@ -153,7 +129,7 @@ export default function Register() {
           </HStack>
           <HStack justify={'space-between'}>
             <Text fontWeight={400} fontSize={'14px'} color={'black'}>
-               {`I'm a person that`}
+              {`I'm a person that`}
             </Text>
             <Select
               isRequired
@@ -175,8 +151,8 @@ export default function Register() {
         direction={['column', 'column', 'row']}
       >
         <Box>
-          <CircularProgress value={Math.trunc(porc) } color="#3378FF">
-            <CircularProgressLabel>{Math.trunc(porc) }%</CircularProgressLabel>
+          <CircularProgress value={Math.trunc(porc)} color="#3378FF">
+            <CircularProgressLabel>{Math.trunc(porc)}%</CircularProgressLabel>
           </CircularProgress>
         </Box>
 
