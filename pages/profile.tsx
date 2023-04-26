@@ -1,29 +1,13 @@
-import { onLogout } from '@/api/AuthAPI';
 import { getSingleUser } from '@/api/FirestoreAPI';
 import { AnfitrionCard } from '@/components/AnfitrionCard';
 import { Layout } from '@/components/Layout';
 import ProfileDataInput from '@/components/ProfileDataInput';
-import { auth } from '@/firebase.config';
-import { Button, HStack, Spinner, Stack, Text } from '@chakra-ui/react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { useSessionWithRedirect } from '@/hooks/useSessionWithRedirect';
+import { Spinner, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
-export default function Prfile() {
-  const router = useRouter();
-  const [loading, setloading] = useState(true);
-  const [session, setsession] = useState<any>();
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (res: any) => {
-      if (!res?.accessToken) {
-        router.push('/');
-      } else {
-        setsession(res);
-        setloading(false);
-      }
-    });
-  }, []);
+export default function Profile() {
+  const { session, loading } = useSessionWithRedirect('/');
 
   const [currentProfile, setcurrentProfile] = useState<any>({});
 
@@ -49,7 +33,7 @@ export default function Prfile() {
         >
           Your profile!
         </Text>
-        <Stack justify={'center'} align={'center'} gap={20}  direction={['column', 'column','row']}>
+        <Stack justify={'center'} align={'center'} gap={20} direction={['column', 'column', 'row']}>
           <Stack width={'50%'} justify={'center'} align={'center'}>
             <Text
               bgClip="text"
