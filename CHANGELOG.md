@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.24](https://github.com/fedeloterstein/hostmate/compare/v0.1.23...v0.1.24) (2023-04-26)
+
+
+### ♻️Refactors
+
+* create hooks ([63a5408](https://github.com/fedeloterstein/hostmate/commit/63a5408777a0879216fc2fbe451c7af0221a0c40))
+
 ### [0.1.23](https://github.com/fedeloterstein/hostmate/compare/v0.1.22...v0.1.23) (2023-04-26)
 
 
