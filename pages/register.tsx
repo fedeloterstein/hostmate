@@ -142,13 +142,28 @@ export default function Register() {
             <Select
               isRequired
               maxW={'219px'}
-              placeholder="Sele ct one"
+              placeholder="Select one"
               name="fee"
               onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
             >
               <option value={'6-10'}>6% - 10% Fee</option>
               <option value={'10-15'}>🔥 10% - 15% (Most Popular)</option>
               <option value={'15-20'}>15% - 20% Fee</option>
+            </Select>
+          </HStack>
+          <HStack justify={'space-between'}>
+            <Text fontWeight={400} fontSize={'14px'} color={'black'}>
+               {`I'm a person that`}
+            </Text>
+            <Select
+              isRequired
+              maxW={'219px'}
+              placeholder="Select one"
+              name="typeUser"
+              onChange={(e) => setdata({ ...data, [e.target.name]: e.target.value })}
+            >
+              <option value={'host'}>👤 Management Properties</option>
+              <option value={'owner'}>🏠 I own property</option>
             </Select>
           </HStack>
         </Stack>

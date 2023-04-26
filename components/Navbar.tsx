@@ -15,6 +15,7 @@ import {
   MenuList,
   Stack,
   Text,
+  Link as LinkC,
 } from '@chakra-ui/react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSession, signOut } from 'next-auth/react';
@@ -27,7 +28,6 @@ export const Navbar = () => {
   const [session, setsession] = useState<any>();
   const [loading, setloading] = useState(true);
 
-
   useEffect(() => {
     onAuthStateChanged(auth, (res: any) => {
       if (!res?.accessToken) {
@@ -39,42 +39,61 @@ export const Navbar = () => {
     });
   }, []);
 
-  const [currentProfile, setcurrentProfile] = useState<any>({})
+  const [currentProfile, setcurrentProfile] = useState<any>({});
   useEffect(() => {
     if (session) {
-      getSingleUser(setcurrentProfile, session.email)
+      getSingleUser(setcurrentProfile, session.email);
     }
+  }, [session]);
 
-  }, [session])
-  
   return (
     <Stack w={'100%'} justify={'space-between'} p={'37px'} direction={'row'}>
       <Link href={'/'}>
         <HStack>
           <Logo />
-          <Badge colorScheme="purple">Beta v3</Badge>
         </HStack>
       </Link>
+      {!session?.accessToken && (
+        <Button
+          size={'lg'}
+          bgColor={'#12C99D'}
+          color={'white'}
+          as={LinkC}
+          isExternal
+          href="https://docs.google.com/forms/d/e/1FAIpQLSejBZGwH8sCNQHtXr2Qg2gfNQ8hrHjUjpKF8La419SrRGvkrg/viewform"
+        >
+          🫶 Feedback
+        </Button>
+      )}
       {session?.accessToken && (
         <Menu>
           <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
-            <Avatar
-              size={'sm'}
-              src={currentProfile?.image as string}
-            />
+            <Avatar size={'sm'} src={currentProfile?.image as string} />
           </MenuButton>
           <MenuList>
             <MenuItem>{currentProfile?.email}</MenuItem>
             <MenuDivider />
-            <MenuItem as={Link} href={'/profile'}>Profile</MenuItem>
-            <MenuItem as={Link} href={'/interviews'}>Interviews</MenuItem>
+            <MenuItem as={Link} href={'/profile'}>
+              Profile
+            </MenuItem>
+            <MenuItem as={Link} href={'/interviews'}>
+              Interviews
+            </MenuItem>
+            <MenuItem
+              as={LinkC}
+              isExternal
+              href="https://docs.google.com/forms/d/e/1FAIpQLSejBZGwH8sCNQHtXr2Qg2gfNQ8hrHjUjpKF8La419SrRGvkrg/viewform"
+            >
+              🫶 Feedback
+            </MenuItem>
+
             <MenuDivider />
-            <MenuItem color={'red'}  onClick={onLogout} >Logout</MenuItem>
+            <MenuItem color={'red'} onClick={onLogout}>
+              Logout
+            </MenuItem>
           </MenuList>
         </Menu>
       )}
     </Stack>
   );
 };
-
-
