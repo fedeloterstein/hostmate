@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.29](https://github.com/fedeloterstein/hostmate/compare/v0.1.28...v0.1.29) (2023-04-27)
+
+
+### 🐛 Bug Fixes
+
+* layout ([83acf46](https://github.com/fedeloterstein/hostmate/commit/83acf46928a919ca47d7329a2368108bffdc2a43))
+
 ### [0.1.28](https://github.com/fedeloterstein/hostmate/compare/v0.1.27...v0.1.28) (2023-04-27)
 
 
