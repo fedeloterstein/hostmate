@@ -23,6 +23,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           gtag('config', 'G-Z4QT5BM9QX');
         `}
       </Script>
+      <Navbar />
       <Container maxW="container.xl">{children}</Container>
     </>
   );
