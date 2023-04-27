@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.25](https://github.com/fedeloterstein/hostmate/compare/v0.1.24...v0.1.25) (2023-04-27)
+
+
+### ✨ Features
+
+* add pricing ([a31ec8f](https://github.com/fedeloterstein/hostmate/commit/a31ec8fb5a1b9c81cec468373fa199b627f07a09))
+
 ### [0.1.24](https://github.com/fedeloterstein/hostmate/compare/v0.1.23...v0.1.24) (2023-04-26)
 
 
