@@ -2,6 +2,7 @@ import { Container } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import { Navbar } from './Navbar';
+import Script from 'next/script';
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -12,6 +13,16 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4QT5BM9QX" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-Z4QT5BM9QX);
+        `}
+      </Script>
       <Navbar />
       <Container maxW='container.xl'>{children}</Container>
     </>
