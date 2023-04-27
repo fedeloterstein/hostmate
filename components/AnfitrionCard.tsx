@@ -1,23 +1,42 @@
+import { editProfile, editViews, getCurrentUser, getSingleUser } from '@/api/FirestoreAPI';
 import { AirbnbIcon } from '@/assets/icons/AirbnbIcon';
 import { LocationIcon } from '@/assets/icons/LocationIcon';
 import { useSession } from '@/hooks/useSession';
 import { Avatar, Button, HStack, Link, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const AnfitrionCard = ({ item }: any) => {
   const { image, fee, location, name, description, email, urlProfileAirbnb } = item;
   const router = useRouter();
   const { session } = useSession();
+  const [currentProfile, setcurrentProfile] = useState<any>({});
 
+  useEffect(() => {
+    if (session) {
+      getSingleUser(setcurrentProfile, session.email);
+    }
+  }, [session]);
+  
   const onclick = () => {
     if (session) {
-      router.push(`/request-meeting/${email}`);
+      const creditsNew = currentProfile.viewsCredits === undefined ? 1 : currentProfile.viewsCredits + 1;
+      if (currentProfile.viewsCredits >= 3) {
+        alert('Ups 😬 - Debes comprar Creditos')
+        router.push('/pricing')
+      } else {
+        if (currentProfile.viewsCredits === undefined) {
+          alert('🚨 Recuerda que solo tienes 3 vistas Free')
+        }
+        editViews(currentProfile.id, {viewsCredits: creditsNew})
+        router.push(`/request-meeting/${email}`);
+      }
     } else {
-      alert('debes hacer login');
+      alert('Debes Loguearte!');
     }
   };
 
+ 
   return (
     <Stack
       w={'319px'}
