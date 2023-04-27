@@ -13,18 +13,17 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4QT5BM9QX" />
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-VV3G6ZNQZY" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', 'G-Z4QT5BM9QX);
+          gtag('config', 'G-VV3G6ZNQZY');
         `}
       </Script>
-      <Navbar />
-      <Container maxW='container.xl'>{children}</Container>
+      <Container maxW="container.xl">{children}</Container>
     </>
   );
 };
