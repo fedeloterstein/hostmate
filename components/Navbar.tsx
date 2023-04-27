@@ -13,6 +13,7 @@ import {
   MenuList,
   Stack,
   Link as LinkC,
+  Badge,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -67,7 +68,9 @@ export const Navbar = () => {
             >
               🫶 Feedback
             </MenuItem>
-
+            <MenuItem as={Link} href={'/pricing'} gap={2}>
+              Pricing <Badge colorScheme='green'>Free</Badge>
+            </MenuItem>
             <MenuDivider />
             <MenuItem color={'red'} onClick={onLogout}>
               Logout

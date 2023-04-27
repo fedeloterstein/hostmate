@@ -3,6 +3,7 @@ import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { ModaLogin } from '@/components/ModaLogin';
 import Script from 'next/script';
+import PricingCards from '@/components/PricingCards';
 
 const origin = typeof window === 'undefined' ? '' : window.location.origin;
 const img1 = `${origin}/images/home1.png`;
@@ -142,6 +143,7 @@ export default function Home() {
             </Button>
           </Stack>
         </Stack>
+        <PricingCards />
       </Stack>
     </Layout>
   );
