@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.26](https://github.com/fedeloterstein/hostmate/compare/v0.1.25...v0.1.26) (2023-04-27)
+
+
+### ✨ Features
+
+* analytics ([ed47097](https://github.com/fedeloterstein/hostmate/commit/ed47097c1ffb2cbae9875f3498933cc34ddf883e))
+
 ### [0.1.25](https://github.com/fedeloterstein/hostmate/compare/v0.1.24...v0.1.25) (2023-04-27)
 
 
