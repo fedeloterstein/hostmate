@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.30](https://github.com/fedeloterstein/hostmate/compare/v0.1.29...v0.1.30) (2023-04-28)
+
+
+### ✨ Features
+
+* refactor texts ([0ce8dfd](https://github.com/fedeloterstein/hostmate/commit/0ce8dfd56b3b24925bcc96f7045904eddb25c16d))
+
 ### [0.1.29](https://github.com/fedeloterstein/hostmate/compare/v0.1.28...v0.1.29) (2023-04-27)
 
 
