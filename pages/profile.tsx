@@ -31,7 +31,7 @@ export default function Profile() {
           fontSize={'40px'}
           mb={'60px'}
         >
-          Your profile!
+          Mi perfil
         </Text>
         <Stack justify={'center'} align={'center'} gap={20} direction={['column', 'column', 'row']}>
           <Stack width={'50%'} justify={'center'} align={'center'}>
@@ -41,7 +41,7 @@ export default function Profile() {
               fontWeight={600}
               fontSize={'22px'}
             >
-              How it looks!
+              Se ve increíble
             </Text>
             <AnfitrionCard item={currentProfile} />
           </Stack>

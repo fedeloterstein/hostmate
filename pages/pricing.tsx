@@ -14,36 +14,26 @@ import {
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { Layout } from '@/components/Layout';
-import PricingCars from '@/components/PricingCards';
 import PricingCards from '@/components/PricingCards';
-
-function PriceWrapper({ children }: { children: ReactNode }) {
-  return (
-    <Box
-      mb={4}
-      shadow="base"
-      borderWidth="1px"
-      alignSelf={{ base: 'center', lg: 'flex-start' }}
-      borderColor={useColorModeValue('gray.200', 'gray.500')}
-      borderRadius={'xl'}
-    >
-      {children}
-    </Box>
-  );
-}
 
 export default function Pricing() {
   return (
     <Layout>
-          <VStack spacing={2} textAlign="center">
-        <Heading as="h1" fontSize="4xl">
-          Hace un Upgrate de tu cuenta
+      <VStack spacing={2} textAlign="center">
+        <Heading
+          as="h1"
+          bgClip="text"
+          bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
+          fontWeight={600}
+          fontSize={['30px', '40px']}
+        >
+          Actualiza a Premium hoy
         </Heading>
-        <Text fontSize="lg" color={'gray.500'}>
-        Consigue contactar con mas personas y aumenta tus posibilidades
+        <Text fontSize="lg" color={'black'} fontWeight={400} fontStyle={'20px'}>
+          Conecta sin límites con propietarios y haz crecer tus ingresos como anfitrión profesional.
         </Text>
       </VStack>
-    <PricingCards />
+      <PricingCards />
     </Layout>
   );
 }

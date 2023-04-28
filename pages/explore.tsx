@@ -20,7 +20,7 @@ export default function Explore() {
           fontWeight={600}
           fontSize={['30px', '40px']}
         >
-          Great Host for you
+          Conoce anfitriones 
         </Heading>
         <SimpleGrid p={5} columns={[1, 1, 2, 3]} spacing={5} alignSelf={'center'}>
           {dataAnfitriones &&

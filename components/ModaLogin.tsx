@@ -76,8 +76,8 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
           <Stack justify={'center'} align={'center'} p={0}>
             <Tabs>
               <TabList>
-                <Tab>Register</Tab>
-                <Tab>Login</Tab>
+                <Tab>Registro</Tab>
+                <Tab>Iniciar sesión</Tab>
               </TabList>
               <TabPanels>
                 <TabPanel>
@@ -89,7 +89,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       fontSize={'18px'}
                       mb={'18px'}
                     >
-                      Register
+                      Regístrate
                     </Heading>
                     <Input
                       onChange={(e) =>
@@ -116,7 +116,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       colorScheme="blue"
                       bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
                     >
-                      Register
+                      Regístrate ahora
                     </Button>
                   </Stack>
                 </TabPanel>
@@ -129,7 +129,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       fontSize={'18px'}
                       mb={'18px'}
                     >
-                      Login
+                      Iniciar sesíon
                     </Heading>
                     <Input
                       onChange={(e) =>
@@ -156,7 +156,7 @@ export const ModaLogin = ({ isOpen, onClose }: any) => {
                       colorScheme="blue"
                       bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
                     >
-                      Login
+                      Iniciar sesíon
                     </Button>
                   </Stack>
                 </TabPanel>

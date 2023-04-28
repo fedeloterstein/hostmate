@@ -62,7 +62,7 @@ export default function Register() {
           bgClip="text"
           bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
         >
-          Complete your profile as Host
+          Completa tu perfil   
         </Heading>
         <Avatar size={'xl'} />
 
