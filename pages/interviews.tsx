@@ -38,7 +38,7 @@ export default function Interviews() {
           fontWeight={600}
           fontSize={['30px', '40px']}
         >
-          My requests meetings
+          Mis entrevistas
         </Heading>
       </Stack>
       <TableContainer>

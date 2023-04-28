@@ -46,7 +46,7 @@ export default function RequestMeeting() {
             fontWeight={600}
             fontSize={['30px', '40px']}
           >
-            Request a meeting
+            Solicita una entrevista
           </Heading>
         </HStack>
         <Textarea
@@ -64,7 +64,7 @@ export default function RequestMeeting() {
           colorScheme="blue"
           bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
         >
-          Send Request
+          Enviar solicitud
         </Button>
       </Stack>
     </Layout>

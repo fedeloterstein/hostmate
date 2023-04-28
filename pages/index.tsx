@@ -3,6 +3,7 @@ import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { ModaLogin } from '@/components/ModaLogin';
 import PricingCards from '@/components/PricingCards';
+import { HowWork } from '@/components/HowWork';
 
 const origin = typeof window === 'undefined' ? '' : window.location.origin;
 const img1 = `${origin}/images/home1.png`;
@@ -19,16 +20,27 @@ export default function Home() {
         <Image src={img3} />
         <ModaLogin isOpen={isOpen} onClose={onClose} />
         <Heading
+          maxW={'817px'}
+          textAlign={'center'}
           fontWeight={600}
           fontSize={'40px'}
-          pt={'22px'}
+          pt={'22px'} 
           bgClip="text"
           bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
         >
-          Become a professional host  and earn extra income
+          Encuentra anfitriones profesionales de Airbnb en Latinoamérica.
         </Heading>
-        <Text pt={'13px'} pb={'13px'} fontWeight={400} fontSize={'20px'} color={'black'}>
-          We help you connect with homeowners to help them manage and boost their rental space.
+        <Text
+          maxW={'939px'}
+          pt={'13px'}
+          pb={'13px'}
+          fontWeight={400}
+          fontSize={'20px'}
+          color={'black'}
+          textAlign={'center'}
+        >
+          Nuestro directorio conecta propietarios con anfitriones profesionales para gestionar e
+          impulsar una experiencia única en los espacios vacacionales y en renta.
         </Text>
         <Button
           color={'white'}
@@ -38,7 +50,7 @@ export default function Home() {
           bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
           onClick={onOpen}
         >
-          Become a Host
+          Regístrate gratis como anfitrión
         </Button>
         <HStack>
           <Text>🔥</Text>
@@ -50,9 +62,10 @@ export default function Home() {
             maxW={'736px'}
             align={'center'}
           >
-            Monthly earning potential $1k-2k
+             Gana desde $1,000-2,000 USD al mes
           </Text>
         </HStack>
+        <HowWork />
         <Stack
           pt={'77px'}
           pb={'59px'}
@@ -84,7 +97,7 @@ export default function Home() {
               maxW={'452px'}
               align={'center'}
             >
-              Need help managing you rental space?
+              ¿Necesitas ayuda para gestionar tus espacios en renta?
             </Text>
             <Button
               color={'white'}
@@ -94,7 +107,7 @@ export default function Home() {
               bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
               onClick={() => router.push('/explore')}
             >
-              See Host
+              Conoce anfitriones profesionales
             </Button>
           </Stack>
           <Stack
@@ -118,7 +131,7 @@ export default function Home() {
               maxW={'305px'}
               align={'center'}
             >
-              Earn extra income as Host
+              Ganar más como anfitrión profesional
             </Text>
             <Button
               color={'white'}
@@ -128,7 +141,7 @@ export default function Home() {
               bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
               onClick={onOpen}
             >
-              Become a Host
+              Regístrate gratis
             </Button>
           </Stack>
         </Stack>

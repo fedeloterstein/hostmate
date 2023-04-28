@@ -56,10 +56,10 @@ export const Navbar = () => {
             <MenuItem>{currentProfile?.email}</MenuItem>
             <MenuDivider />
             <MenuItem as={Link} href={'/profile'}>
-              Profile
+              Perfil
             </MenuItem>
             <MenuItem as={Link} href={'/interviews'}>
-              Interviews
+              Entrevistas
             </MenuItem>
             <MenuItem
               as={LinkC}
@@ -69,11 +69,11 @@ export const Navbar = () => {
               🫶 Feedback
             </MenuItem>
             <MenuItem as={Link} href={'/pricing'} gap={2}>
-              Pricing <Badge colorScheme='green'>Free</Badge>
+             Precios <Badge colorScheme='green'>Free</Badge>
             </MenuItem>
             <MenuDivider />
             <MenuItem color={'red'} onClick={onLogout}>
-              Logout
+              Cerrar Sesíon
             </MenuItem>
           </MenuList>
         </Menu>
