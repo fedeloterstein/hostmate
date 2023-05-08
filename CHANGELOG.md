@@ -2,6 +2,13 @@
 
 ---
 
+### [0.1.31](https://github.com/fedeloterstein/hostmate/compare/v0.1.30...v0.1.31) (2023-05-08)
+
+
+### 🐛 Bug Fixes
+
+* fx text ([3ef39ba](https://github.com/fedeloterstein/hostmate/commit/3ef39ba99aa8a762928bfa01fd5d9349864f52fe))
+
 ### [0.1.30](https://github.com/fedeloterstein/hostmate/compare/v0.1.29...v0.1.30) (2023-04-28)
 
 
