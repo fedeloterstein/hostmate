@@ -43,7 +43,7 @@ export default function PricingCards() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Free
+            Gratis
             </Text>
             <HStack justifyContent="center">
               <Text fontSize="3xl" fontWeight="600">
@@ -58,19 +58,15 @@ export default function PricingCards() {
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                3 creditos
+                3 créditos anual
               </ListItem>
               <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  Lorem, ipsum dolor.
+                  Perfil básico
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
+                  Visibilidad en directorio base
                 </ListItem>
             </List>
             <Box w="80%" pt={7}>
@@ -81,7 +77,7 @@ export default function PricingCards() {
                 colorScheme="blue"
                 bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
               >
-                Start trial
+                Comprar
               </Button>
             </Box>
           </VStack>
@@ -105,19 +101,19 @@ export default function PricingCards() {
                 fontWeight="600"
                 rounded="xl"
               >
-                Más Popular
+               Mas Popular
               </Text>
             </Box>
             <Box py={4} px={12}>
               <Text fontWeight="500" fontSize="2xl">
-                Basic
+              Básico
               </Text>
               <HStack justifyContent="center">
                 <Text fontSize="3xl" fontWeight="600">
                   $
                 </Text>
                 <Text fontSize="5xl" fontWeight="900">
-                  1
+                  9
                 </Text>
               </HStack>
             </Box>
@@ -125,23 +121,19 @@ export default function PricingCards() {
               <List spacing={3} textAlign="start" px={12}>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  6 Creditos
+                  6 créditos anual
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  Lorem, ipsum dolor.
+                  Promoción Perfil Premium
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
+                  Visibilidad en directorio Pro
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="green.500" />
-                  5TB Lorem, ipsum dolor.
+                  Insignia SuperHost
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
@@ -152,7 +144,7 @@ export default function PricingCards() {
                   colorScheme="blue"
                   bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
                 >
-                  Start trial
+                  Comenzar
                 </Button>
               </Box>
             </VStack>
@@ -161,14 +153,14 @@ export default function PricingCards() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Ilimitado 
+            Ilimitado
             </Text>
             <HStack justifyContent="center">
               <Text fontSize="3xl" fontWeight="600">
                 $
               </Text>
               <Text fontSize="5xl" fontWeight="900">
-                10
+                17
               </Text>
         
             </HStack>
@@ -177,15 +169,19 @@ export default function PricingCards() {
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                unlimited Creditos
+                Créditos ilimitados
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                Lorem, ipsum dolor.
+                Promoción Perfil Premium
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                5TB Lorem, ipsum dolor.
+                Visibilidad en directorio Pro
+              </ListItem>
+              <ListItem>
+              <ListIcon as={FaCheckCircle} color="green.500" />
+              Insignia SuperHost
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
