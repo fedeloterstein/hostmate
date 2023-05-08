@@ -73,8 +73,9 @@ export const AnfitrionCard = ({ item }: any) => {
         {description}
       </Text>
       <Stack pb={'11px'}>
-        <Link href={urlProfileAirbnb} isExternal>
+        <Link href={urlProfileAirbnb} isExternal display={'flex'} alignItems={'center'} gap={2}>
           <AirbnbIcon />
+          (150 reviews)
         </Link>
       </Stack>
       <Button
@@ -85,7 +86,7 @@ export const AnfitrionCard = ({ item }: any) => {
         colorScheme="blue"
         bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
       >
-        Request an meeting
+        Solicitar una reunión
       </Button>
     </Stack>
   );

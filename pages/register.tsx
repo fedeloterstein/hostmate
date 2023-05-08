@@ -165,7 +165,7 @@ export default function Register() {
             bgGradient="linear(to-r, rgba(51, 120, 255, 1), rgba(112, 0, 255, 1))"
             onClick={() => router.push('/explore')}
           >
-            Skip for now
+            Saltear
           </Button>
           <Button
             color={'white'}
@@ -176,7 +176,7 @@ export default function Register() {
             onClick={saveProfile}
             isLoading={loading}
           >
-            Save Profile
+            Guardar Perfil
           </Button>
         </HStack>
       </Stack>
